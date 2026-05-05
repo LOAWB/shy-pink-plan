@@ -725,6 +725,357 @@
     border-top: 1px dashed var(--line);
   }
 
+  /* SETUP STEPS - interactive walkthrough */
+  .setup-progress { margin: 4px 0 22px; }
+  .setup-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .setup-progress-label .l {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--ink-mute);
+  }
+  .setup-progress-label .v {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--ink);
+  }
+  .setup-progress-bar {
+    height: 12px;
+    background: var(--muslin-deep);
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+  }
+  .setup-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink-300) 0%, var(--red) 100%);
+    transition: width 0.6s cubic-bezier(.2,.8,.2,1);
+    border-radius: 999px;
+    box-shadow: 0 0 12px rgba(200,32,45,0.4);
+  }
+
+  .setup-steps { display: block; }
+  .setup-step {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow 0.2s, border-color 0.15s;
+  }
+  .setup-step.open {
+    box-shadow: var(--shadow);
+    border-color: var(--pink-300);
+  }
+  .setup-step.done {
+    background: linear-gradient(135deg, white 0%, #f5fff7 100%);
+    border-left: 4px solid var(--green);
+  }
+  .setup-step-head {
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .setup-step-head:active { background: var(--pink-50); }
+  .setup-num {
+    width: 36px; height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--muslin);
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 1.05rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .setup-step.done .setup-num {
+    background: var(--green);
+    color: white;
+  }
+  .setup-step.done .setup-num::after { content: '✓'; }
+  .setup-step.done .setup-num span { display: none; }
+  .setup-head-body { flex: 1; min-width: 0; }
+  .setup-head-title {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 3px;
+  }
+  .setup-step.done .setup-head-title { color: var(--ink-soft); }
+  .setup-head-meta {
+    font-size: 0.8rem;
+    color: var(--ink-mute);
+  }
+  .setup-chevron {
+    flex-shrink: 0;
+    color: var(--ink-mute);
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .setup-step.open .setup-chevron { transform: rotate(180deg); }
+  .setup-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+  .setup-step.open .setup-body { max-height: 800px; }
+  .setup-body-inner {
+    padding: 0 18px 20px;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  .setup-why {
+    background: var(--pink-50);
+    border-left: 3px solid var(--pink-400);
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    font-size: 0.92rem;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .setup-why strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  .setup-how-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .setup-how {
+    list-style: none;
+    counter-reset: how;
+    padding: 0;
+    margin-bottom: 16px;
+  }
+  .setup-how li {
+    counter-increment: how;
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.93rem;
+    color: var(--ink);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line);
+  }
+  .setup-how li:last-child { border-bottom: 0; }
+  .setup-how li::before {
+    content: counter(how);
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--muslin);
+    color: var(--ink-soft);
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .setup-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .setup-cta {
+    background: var(--ink);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .setup-cta:active { transform: scale(0.97); }
+  .setup-cta:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.18); }
+  .setup-cta.pink { background: var(--red); }
+  .setup-mark {
+    background: var(--green);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.15s;
+  }
+  .setup-mark:active { transform: scale(0.97); }
+  .setup-mark.unmark {
+    background: transparent;
+    color: var(--ink-mute);
+    border: 1px solid var(--line);
+  }
+
+  /* CELEBRATION */
+  .celebration {
+    background: linear-gradient(135deg, var(--pink-200) 0%, var(--pink-400) 50%, var(--red) 100%);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    animation: pop 0.6s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes pop {
+    0% { transform: scale(0.92); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .celebration::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 60%);
+    pointer-events: none;
+  }
+  .celebration h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+  .celebration p {
+    color: rgba(255,255,255,0.92);
+    font-size: 1rem;
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.55;
+    position: relative;
+  }
+  .celebration .icon {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  /* DAILY STREAK */
+  .daily-card {
+    background: linear-gradient(135deg, white 0%, var(--pink-50) 100%);
+    border: 1px solid var(--pink-200);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+    border-left: 4px solid var(--pink-400);
+  }
+  .daily-card .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .daily-card .title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .daily-streak {
+    background: var(--red);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+  }
+  .daily-streak.zero { background: var(--ink-mute); }
+  .daily-card .body { font-size: 0.93rem; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.55; }
+  .daily-card .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .daily-card .done-today {
+    background: var(--green);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* EXPLAINER */
+  .explainer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .explainer-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+  }
+  .explainer-num {
+    width: 28px; height: 28px;
+    background: var(--muslin);
+    color: var(--ink-soft);
+    border-radius: 50%;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .explainer-title {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .explainer-body { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; }
+
   /* CALLOUT */
   .callout {
     background: linear-gradient(135deg, var(--ink) 0%, #2a1f1a 100%);
@@ -850,15 +1201,97 @@
 
   <div class="tabs-wrap">
     <nav class="tabs" role="tablist">
-      <button class="tab-btn active" data-tab="today">Today</button>
+      <button class="tab-btn active" data-tab="starthere">Start Here</button>
+      <button class="tab-btn" data-tab="today">Today</button>
       <button class="tab-btn" data-tab="dropday">Drop Day</button>
       <button class="tab-btn" data-tab="raffles">Raffles</button>
       <button class="tab-btn" data-tab="status">Status</button>
     </nav>
   </div>
 
+  <!-- START HERE TAB -->
+  <section class="tab-panel active" id="starthere">
+    <h2>Start <span class="accent">here</span>, Sam.</h2>
+    <p class="section-lede">First time doing a sneaker raffle? No clue what SNKRS is? You are good. Walk through these 6 steps. Tap any step to expand it. Each one tells you exactly what to do, why it matters, and gives you a button to do it. Save your progress as you go.</p>
+
+    <div class="setup-progress">
+      <div class="setup-progress-label">
+        <span class="l">Setup progress</span>
+        <span class="v" id="setup-value">0 / 6</span>
+      </div>
+      <div class="setup-progress-bar">
+        <div class="setup-progress-fill" id="setup-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="setup-steps" id="setup-steps">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="celebration" id="celebration" hidden>
+      <div class="icon">♥</div>
+      <h3>You are ready, Sam.</h3>
+      <p>All 6 setup steps done. From here, just keep your phone close and tap the texts as they come in. The bots and the plan have you covered. We are going to land these.</p>
+    </div>
+
+    <h3 style="margin: 32px 0 12px;">Daily routine</h3>
+    <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 12px;">Five minutes every morning until the drop. The Warm-up Coach will text you a reminder at 9am.</p>
+
+    <div class="daily-card" id="daily-card">
+      <div class="head">
+        <div class="title">Today's Nike app warm-up</div>
+        <div id="daily-streak" class="daily-streak zero">0 day streak</div>
+      </div>
+      <div class="body">
+        Open SNKRS. Watch one Behind the Design video (any shoe, ~30 sec). Vote on one poll. Tap a product to view it. Done. The more days you do this, the more Nike trusts your account, the better your draw odds.
+      </div>
+      <div class="actions">
+        <a class="setup-cta pink" href="snkrs://launch" id="daily-open">Open SNKRS →</a>
+        <button class="setup-mark" id="daily-mark">I did it today</button>
+      </div>
+    </div>
+
+    <h3 style="margin: 32px 0 12px;">When a raffle opens, what happens?</h3>
+    <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 14px;">In plain language, here is exactly what to expect.</p>
+
+    <div class="explainer-grid">
+      <div class="explainer-card">
+        <div class="explainer-num">1</div>
+        <div class="explainer-title">Your phone buzzes</div>
+        <div class="explainer-body">A text alert from the bots. It will look like "🚨🚨🚨 SAM, THE SHY PINK RAFFLE IS LIVE" with a link.</div>
+      </div>
+      <div class="explainer-card">
+        <div class="explainer-num">2</div>
+        <div class="explainer-title">Tap the link in the text</div>
+        <div class="explainer-body">It opens the right page, either the SNKRS app, travisscott.com, or a boutique. Just tap it.</div>
+      </div>
+      <div class="explainer-card">
+        <div class="explainer-num">3</div>
+        <div class="explainer-title">Hit "Enter" on the page</div>
+        <div class="explainer-body">SNKRS: tap "Enter Draw," confirm with Apple Pay. Boutique: fill the short form (your saved details copy with one tap).</div>
+      </div>
+      <div class="explainer-card">
+        <div class="explainer-num">4</div>
+        <div class="explainer-title">Wait, then check email</div>
+        <div class="explainer-body">If you won, you get a "you won, pay your invoice" email a few hours later. PAY WITHIN 24 HOURS or you forfeit the shoe.</div>
+      </div>
+    </div>
+
+    <div class="info-strip">
+      <strong>Most important rule.</strong> If you get a "you won" email from a boutique, pay the invoice within 24 hours. If from SNKRS, your card was already charged. Watch your inbox for a few days after the drop.
+    </div>
+
+    <h3 style="margin: 32px 0 12px;">When a raffle says you didn't win</h3>
+    <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; margin-bottom: 14px;">No alert needed. You just won't see a winning email. That's normal. The Travis Scott Reverse Mocha had 2.4 million entries. Most people don't win at any single store. That's why we enter 22 stores plus SNKRS plus Travis. Spread bets.</p>
+
+    <div class="callout">
+      <h3>If anything is confusing</h3>
+      <p>Text Justin. He is on this with you. The page works on your phone, the bots are running on his iMac, and the plan is already in motion. You just have to follow the texts as they come.</p>
+    </div>
+  </section>
+
   <!-- TODAY TAB -->
-  <section class="tab-panel active" id="today">
+  <section class="tab-panel" id="today">
     <h2>What we are <span class="accent">doing</span>.</h2>
     <p class="section-lede">The path from now to the shoes on your feet, broken into chunks. The phase card above tells you what TODAY is about. Below is the full arc so you can see what is coming.</p>
 
@@ -1486,9 +1919,252 @@
     buildCountdown([[days, 'days'], [hours, 'hrs'], [mins, 'min'], [secs, 'sec']]);
   }
 
+  // SETUP STEPS - interactive walkthrough
+  const setupSteps = [
+    {
+      id: 'snkrs-install',
+      title: 'Install the Nike SNKRS app',
+      duration: '3 min, do it once',
+      why: 'SNKRS is where the Shy Pink officially drops on May 22. Without the app, you cannot enter the main raffle. This is the most important step.',
+      how: [
+        'Tap the button below to open the App Store',
+        'Tap "Get" to install the app (it is free)',
+        'Open SNKRS, tap "Sign Up" to create a Nike account, or "Sign In" if you have one',
+        'Use a real email you check often, since wins come by email'
+      ],
+      cta: { label: 'Open App Store', href: 'https://apps.apple.com/us/app/nike-snkrs-shoes-streetwear/id1059459963' }
+    },
+    {
+      id: 'snkrs-payment',
+      title: 'Save payment + address in SNKRS',
+      duration: '5 min, do it once',
+      why: 'When you win, Nike charges your card and ships the shoes automatically. If your info is wrong or missing, you lose the win. We do not want to lose to a typo.',
+      how: [
+        'In the SNKRS app, tap your profile icon (bottom right)',
+        'Tap the gear (settings)',
+        'Tap "Payment Methods" and add Apple Pay (fastest), or your card',
+        'Tap "Shipping Addresses" and add your address',
+        'Double-check your phone number under Account is correct'
+      ],
+      cta: { label: 'Open SNKRS', href: 'snkrs://launch' }
+    },
+    {
+      id: 'snkrs-notify',
+      title: 'Hit "Notify Me" on the Shy Pink page',
+      duration: '1 min, do it once',
+      why: 'Nike notices who is paying attention. Hitting Notify Me tells their algorithm "this person actually wants this shoe," and that improves your draw odds.',
+      how: [
+        'Open SNKRS',
+        'Tap the search icon at the bottom',
+        'Type "Travis Scott" or "Shy Pink"',
+        'Find the Air Jordan 1 Low Travis Scott Shy Pink',
+        'Tap the bell icon (Notify Me). It should turn solid.'
+      ],
+      cta: { label: 'Open SNKRS', href: 'snkrs://launch' }
+    },
+    {
+      id: 'travis-email',
+      title: 'Sign up for emails at travisscott.com',
+      duration: '2 min, do it once',
+      why: 'Travis often runs his OWN raffle on his website 5 to 10 days BEFORE the SNKRS drop. The email list is how he announces it. Our bot is also watching for this, but two channels are better than one.',
+      how: [
+        'Tap the button to open his site',
+        'Scroll to the "Enter email for updates" box',
+        'Type your email',
+        'Tap the box that says "I accept the terms"',
+        'Submit'
+      ],
+      cta: { label: 'Open travisscott.com', href: 'https://travisscott.com' }
+    },
+    {
+      id: 'sole-retriever',
+      title: 'Install Sole Retriever app',
+      duration: '3 min, do it once',
+      why: 'Sole Retriever is the fastest sneaker news source on the internet. Their push notifications can alert you the moment any raffle opens, anywhere in the world. Backup channel.',
+      how: [
+        'Tap the button below to open the App Store',
+        'Install Sole Retriever (free)',
+        'Open it, allow notifications when it asks',
+        'In the search bar, type "Travis Scott Shy Pink"',
+        'Tap the bell on the listing to subscribe to alerts'
+      ],
+      cta: { label: 'Open App Store', href: 'https://apps.apple.com/us/app/sole-retriever/id1474787030' }
+    },
+    {
+      id: 'save-details',
+      title: 'Save your shipping details',
+      duration: '3 min, do it once',
+      why: 'Boutique raffles all ask for the same info: name, address, phone, email, size. Saving it here once means each form takes 30 seconds instead of 2 minutes. That matters when you are entering 20 stores.',
+      how: [
+        'Tap the button to jump to the Raffles tab',
+        'Find "Your details (tap to copy)" near the top',
+        'Tap and HOLD each card to type your info into it',
+        'Press Enter to save. Saves to this device only.',
+        'When a raffle form asks for a field, just tap to copy and paste in.'
+      ],
+      cta: { label: 'Go to Raffles tab', href: '#raffles' }
+    }
+  ];
+
+  function renderSetupSteps() {
+    const container = document.getElementById('setup-steps');
+    container.innerHTML = '';
+    setupSteps.forEach((step, i) => {
+      const isDone = localStorage.getItem('setup-' + step.id) === '1';
+      const card = document.createElement('div');
+      card.className = 'setup-step' + (isDone ? ' done' : '');
+      card.dataset.id = step.id;
+
+      const head = document.createElement('div');
+      head.className = 'setup-step-head';
+      head.innerHTML = `
+        <div class="setup-num"><span>${i + 1}</span></div>
+        <div class="setup-head-body">
+          <div class="setup-head-title">${step.title}</div>
+          <div class="setup-head-meta">${step.duration}</div>
+        </div>
+        <div class="setup-chevron">▾</div>
+      `;
+      card.appendChild(head);
+
+      const body = document.createElement('div');
+      body.className = 'setup-body';
+      const inner = document.createElement('div');
+      inner.className = 'setup-body-inner';
+
+      // Why
+      const why = document.createElement('div');
+      why.className = 'setup-why';
+      why.innerHTML = `<strong>Why this matters</strong>${step.why}`;
+      inner.appendChild(why);
+
+      // How
+      const howLabel = document.createElement('div');
+      howLabel.className = 'setup-how-label';
+      howLabel.textContent = 'Step by step';
+      inner.appendChild(howLabel);
+
+      const howList = document.createElement('ol');
+      howList.className = 'setup-how';
+      step.how.forEach(h => {
+        const li = document.createElement('li');
+        li.textContent = h;
+        howList.appendChild(li);
+      });
+      inner.appendChild(howList);
+
+      // Actions
+      const actions = document.createElement('div');
+      actions.className = 'setup-actions';
+
+      const cta = document.createElement(step.cta.href.startsWith('#') ? 'button' : 'a');
+      cta.className = 'setup-cta pink';
+      cta.textContent = step.cta.label + ' →';
+      if (step.cta.href.startsWith('#')) {
+        cta.addEventListener('click', e => {
+          e.preventDefault();
+          const tab = step.cta.href.slice(1);
+          const btn = document.querySelector(`[data-tab="${tab}"]`);
+          if (btn) btn.click();
+        });
+      } else {
+        cta.href = step.cta.href;
+        if (step.cta.href.startsWith('http')) {
+          cta.target = '_blank';
+          cta.rel = 'noopener';
+        }
+      }
+      actions.appendChild(cta);
+
+      const mark = document.createElement('button');
+      mark.className = 'setup-mark' + (isDone ? ' unmark' : '');
+      mark.textContent = isDone ? 'Mark not done' : 'I did it ✓';
+      mark.addEventListener('click', () => {
+        if (localStorage.getItem('setup-' + step.id) === '1') {
+          localStorage.removeItem('setup-' + step.id);
+        } else {
+          localStorage.setItem('setup-' + step.id, '1');
+          showToast('Step done! 🌸');
+        }
+        renderSetupSteps();
+        updateSetupProgress();
+      });
+      actions.appendChild(mark);
+
+      inner.appendChild(actions);
+      body.appendChild(inner);
+      card.appendChild(body);
+
+      // Toggle expand on head click
+      head.addEventListener('click', () => {
+        card.classList.toggle('open');
+      });
+
+      container.appendChild(card);
+    });
+  }
+
+  function updateSetupProgress() {
+    const total = setupSteps.length;
+    const done = setupSteps.filter(s => localStorage.getItem('setup-' + s.id) === '1').length;
+    const fill = document.getElementById('setup-fill');
+    const val = document.getElementById('setup-value');
+    if (fill) fill.style.width = (done / total * 100) + '%';
+    if (val) val.textContent = `${done} / ${total}`;
+    const cel = document.getElementById('celebration');
+    if (cel) cel.hidden = done < total;
+  }
+
+  // DAILY ROUTINE - streak counter
+  function dateKey(d = new Date()) {
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+  function setupDaily() {
+    const mark = document.getElementById('daily-mark');
+    const streakEl = document.getElementById('daily-streak');
+    const today = dateKey();
+    function render() {
+      const lastDone = localStorage.getItem('daily-last-done') || '';
+      const streak = parseInt(localStorage.getItem('daily-streak') || '0', 10);
+      if (lastDone === today) {
+        mark.textContent = '✓ Done today';
+        mark.style.background = 'var(--green)';
+        mark.disabled = true;
+      } else {
+        mark.textContent = 'I did it today';
+        mark.disabled = false;
+      }
+      if (streak > 0) {
+        streakEl.classList.remove('zero');
+        streakEl.textContent = streak + ' day streak 🔥';
+      } else {
+        streakEl.classList.add('zero');
+        streakEl.textContent = '0 day streak';
+      }
+    }
+    mark.addEventListener('click', () => {
+      const today = dateKey();
+      const lastDone = localStorage.getItem('daily-last-done') || '';
+      if (lastDone === today) return;
+      const yesterdayDate = new Date();
+      yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+      const yesterday = dateKey(yesterdayDate);
+      let streak = parseInt(localStorage.getItem('daily-streak') || '0', 10);
+      streak = (lastDone === yesterday) ? streak + 1 : 1;
+      localStorage.setItem('daily-streak', String(streak));
+      localStorage.setItem('daily-last-done', today);
+      showToast(`Day ${streak} done! 🌸`);
+      render();
+    });
+    render();
+  }
+
   // INIT
   applyPhase();
   renderTimelineOverview();
+  renderSetupSteps();
+  updateSetupProgress();
+  setupDaily();
   setupChecklist();
   setupRaffleButtons();
   setupCopyGrid();
