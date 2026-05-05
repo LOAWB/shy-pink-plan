@@ -637,6 +637,94 @@
   .progress-label .l { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); }
   .progress-label .v { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 900; color: var(--ink); }
 
+  /* BOT CARDS — meet the team */
+  .bots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .bot-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 4px solid var(--ink-mute);
+  }
+  .bot-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .bot-card.always { border-left-color: var(--green); }
+  .bot-card.scheduled { border-left-color: var(--pink-400); }
+  .bot-card.critical {
+    border-left-color: var(--red);
+    background: linear-gradient(180deg, white 0%, var(--pink-50) 100%);
+  }
+  .bot-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .bot-card.always .bot-status { color: var(--green); }
+  .bot-card.scheduled .bot-status { color: var(--pink-500); }
+  .bot-card.critical .bot-status { color: var(--red); }
+  .bot-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green);
+    animation: pulse 1.8s infinite;
+  }
+  .bot-card.scheduled .bot-dot { background: var(--pink-400); animation: none; }
+  .bot-card.critical .bot-dot,
+  .bot-dot.critical {
+    background: var(--red);
+    animation: pulse 1s infinite;
+  }
+  .bot-clock {
+    width: 12px; height: 12px;
+    border: 2px solid var(--pink-400);
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+  }
+  .bot-clock::before {
+    content: '';
+    position: absolute;
+    width: 4px; height: 1.5px;
+    background: var(--pink-400);
+    top: 4px; left: 4px;
+    transform-origin: 0 50%;
+    transform: rotate(45deg);
+  }
+  .bot-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .bot-job {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .bot-when {
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    font-weight: 600;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+  }
+
   /* CALLOUT */
   .callout {
     background: linear-gradient(135deg, var(--ink) 0%, #2a1f1a 100%);
@@ -929,28 +1017,105 @@
 
   <!-- STATUS TAB -->
   <section class="tab-panel" id="status">
-    <h2>The <span class="accent">monitor</span>.</h2>
-    <p class="section-lede">Three watchers running 24/7 on Justin's iMac. They are looking for any sign that the Shy Pink raffle is live or being set up. The moment they see anything, your phone buzzes.</p>
+    <h2>Meet the <span class="accent">team</span>.</h2>
+    <p class="section-lede">Eleven little helpers live on Justin's iMac. Each one has one job. Together they make sure you do not miss the drop. Here is what every single one does, in plain language.</p>
 
-    <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 24px;">
-      <div style="background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--green);">
-        <div style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); margin-bottom: 6px;">Travis Scott Site</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; line-height: 1.05; color: var(--ink); margin-bottom: 6px;">Every 60 sec</div>
-        <div style="font-size: 0.88rem; color: var(--ink-soft);">Watches the homepage and shop subdomain for the raffle going live. Detects the password gate dropping.</div>
+    <h3 style="margin: 8px 0 12px;">Always watching</h3>
+    <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 12px;">These three never sleep. They check the internet for you so you do not have to.</p>
+
+    <div class="bots-grid">
+      <div class="bot-card always">
+        <div class="bot-status"><span class="bot-dot"></span>ALWAYS ON</div>
+        <div class="bot-name">The Site Watcher</div>
+        <div class="bot-job">Looks at Travis Scott's website every minute. The second the Shy Pink page goes up, it tells your phone.</div>
+        <div class="bot-when">Runs 24 hours a day, every day. Already going right now.</div>
       </div>
-      <div style="background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--green);">
-        <div style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); margin-bottom: 6px;">Sole Retriever</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; line-height: 1.05; color: var(--ink); margin-bottom: 6px;">Every 2 min</div>
-        <div style="font-size: 0.88rem; color: var(--ink-soft);">The fastest sneaker news source. Posts "raffle is live" articles within seconds.</div>
+      <div class="bot-card always">
+        <div class="bot-status"><span class="bot-dot"></span>ALWAYS ON</div>
+        <div class="bot-name">The News Reader</div>
+        <div class="bot-job">Reads Sole Retriever every 2 minutes. They are usually first to know when a raffle goes live.</div>
+        <div class="bot-when">Runs 24 hours a day, every day. Already going right now.</div>
       </div>
-      <div style="background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--green);">
-        <div style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); margin-bottom: 6px;">Date Watch</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; line-height: 1.05; color: var(--ink); margin-bottom: 6px;">Daily 7am</div>
-        <div style="font-size: 0.88rem; color: var(--ink-soft);">Verifies 8 news sources still confirm May 22. Alerts if any flips.</div>
+      <div class="bot-card always">
+        <div class="bot-status"><span class="bot-dot"></span>WAKES DAILY</div>
+        <div class="bot-name">The Date Detective</div>
+        <div class="bot-job">Every morning at 7am, it checks 8 different sneaker websites to make sure they still say May 22. If anyone changes their mind, your phone buzzes.</div>
+        <div class="bot-when">Wakes up daily at 7:00 am Arizona time.</div>
       </div>
     </div>
 
-    <h3 style="margin: 20px 0 10px;">Your warm-up checklist</h3>
+    <h3 style="margin: 28px 0 12px;">Daily nudge</h3>
+    <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 12px;">A friendly reminder so you do not forget the small stuff.</p>
+
+    <div class="bots-grid">
+      <div class="bot-card scheduled">
+        <div class="bot-status"><span class="bot-clock"></span>EVERY DAY</div>
+        <div class="bot-name">The Warm-up Coach</div>
+        <div class="bot-job">Texts you each morning at 9. Reminds you to open the Nike app, watch a 30-second video, vote on a poll, hit Notify Me. Five minutes total. The more you use the app, the more Nike likes you, and the better your odds.</div>
+        <div class="bot-when">Every day at 9:00 am, until May 22.</div>
+      </div>
+    </div>
+
+    <h3 style="margin: 28px 0 12px;">Big-day reminders</h3>
+    <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 12px;">Three reminders that fire on the calendar, then never again.</p>
+
+    <div class="bots-grid">
+      <div class="bot-card scheduled">
+        <div class="bot-status"><span class="bot-clock"></span>MAY 12</div>
+        <div class="bot-name">The Travis Window Reminder</div>
+        <div class="bot-job">Texts you the morning of May 12. That is when Travis usually surprises everyone by dropping his own raffle on travisscott.com. Keep your phone close all week.</div>
+        <div class="bot-when">May 12 at 9:00 am, one time only.</div>
+      </div>
+      <div class="bot-card scheduled">
+        <div class="bot-status"><span class="bot-clock"></span>MAY 19</div>
+        <div class="bot-name">The Boutique Round-up</div>
+        <div class="bot-job">Texts you the morning of May 19. That is when smaller stores open their raffles. Your job: open the Raffles tab here, tap each store, paste in your details, submit. Aim for all 22.</div>
+        <div class="bot-when">May 19 at 9:00 am, one time only.</div>
+      </div>
+      <div class="bot-card scheduled">
+        <div class="bot-status"><span class="bot-clock"></span>MAY 21</div>
+        <div class="bot-name">The Night-Before Check</div>
+        <div class="bot-job">Texts you May 21 evening. Just a friendly nudge: are all raffles entered, is your Apple Pay loaded, is your phone charging, is your alarm set for 5:30 am. Tomorrow is the day.</div>
+        <div class="bot-when">May 21 at 8:00 pm, one time only.</div>
+      </div>
+    </div>
+
+    <h3 style="margin: 28px 0 12px;">Drop morning countdown</h3>
+    <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 12px;">Four reminders on May 22, getting more urgent. The last one is the big one.</p>
+
+    <div class="bots-grid">
+      <div class="bot-card scheduled">
+        <div class="bot-status"><span class="bot-clock"></span>MAY 22, 5:30 AM</div>
+        <div class="bot-name">The Wake-Up Call</div>
+        <div class="bot-job">Wakes you up gently. The drop is in 90 minutes. Time to open SNKRS on every device, log out and back in, confirm Apple Pay is loaded.</div>
+        <div class="bot-when">May 22 at 5:30 am, one time only.</div>
+      </div>
+      <div class="bot-card scheduled">
+        <div class="bot-status"><span class="bot-clock"></span>MAY 22, 6:30 AM</div>
+        <div class="bot-name">The 30-Minute Warning</div>
+        <div class="bot-job">Half an hour out. Tells you to navigate to the Shy Pink page in the SNKRS app and just wait. Phone in hand.</div>
+        <div class="bot-when">May 22 at 6:30 am, one time only.</div>
+      </div>
+      <div class="bot-card scheduled">
+        <div class="bot-status"><span class="bot-clock"></span>MAY 22, 6:50 AM</div>
+        <div class="bot-name">The 10-Minute Warning</div>
+        <div class="bot-job">Last call. Ten minutes left. Phone in hand, SNKRS open, breathe. The moment the Enter button lights up, tap it.</div>
+        <div class="bot-when">May 22 at 6:50 am, one time only.</div>
+      </div>
+      <div class="bot-card critical">
+        <div class="bot-status"><span class="bot-dot critical"></span>MAY 22, 7:00 AM</div>
+        <div class="bot-name">The GO Signal</div>
+        <div class="bot-job">The big one. The draw is open. Tap Enter Draw on SNKRS. Use Apple Pay. Submit. Repeat on every account you have. This is the one you have been training for.</div>
+        <div class="bot-when">May 22 at 7:00 am, one time only.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>What if a bot misses something?</h3>
+      <p>The 11 bots overlap on purpose. The Site Watcher and the News Reader both watch for the raffle going live but in different ways. The Date Detective and the news websites would both have to be wrong for the date to surprise us. Defense in depth. We built it this way so one failure cannot break the plan.</p>
+    </div>
+
+    <h3 style="margin: 28px 0 10px;">Your warm-up checklist</h3>
     <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 12px;">Tap each box. Saves automatically. The more boxes checked, the better our odds.</p>
 
     <div class="progress-label">
