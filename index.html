@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#f7c8d0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta property="og:title" content="Operation Shy Pink" />
-<meta property="og:description" content="The plan to put the Travis Scott XAJ1 Shy Pink on her feet. 100% guaranteed." />
+<meta property="og:title" content="The Shy Pink Plan, for Sam" />
+<meta property="og:description" content="The plan to land your Travis Scott Shy Pinks. Built with love." />
 <meta property="og:type" content="website" />
-<title>Operation Shy Pink</title>
+<title>For Sam</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -26,6 +26,7 @@
     --sail: #fbf8f0;
     --red: #c8202d;
     --red-deep: #a81824;
+    --green: #1f9e4a;
     --ink: #1a1310;
     --ink-soft: #4a3f3a;
     --ink-mute: #8a7e76;
@@ -51,12 +52,12 @@
     overflow-x: hidden;
   }
   body {
-    padding: 0 0 calc(120px + env(safe-area-inset-bottom));
+    padding: 0 0 calc(40px + env(safe-area-inset-bottom));
     font-size: 16px;
   }
   ::selection { background: var(--pink-200); color: var(--ink); }
 
-  .serif { font-family: 'Fraunces', Georgia, serif; font-feature-settings: 'ss01' on; letter-spacing: -0.02em; }
+  .serif { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.02em; }
 
   /* HERO */
   header.hero {
@@ -64,7 +65,7 @@
       radial-gradient(ellipse at 80% 0%, rgba(232, 154, 168, 0.4) 0%, transparent 50%),
       radial-gradient(ellipse at 20% 100%, rgba(244, 235, 217, 0.6) 0%, transparent 60%),
       linear-gradient(160deg, var(--muslin) 0%, var(--pink-200) 65%, var(--pink-400) 100%);
-    padding: 64px 22px 80px;
+    padding: 56px 22px 70px;
     border-bottom: 4px solid var(--red);
     position: relative;
     overflow: hidden;
@@ -75,14 +76,6 @@
     top: -120px; right: -100px;
     width: 360px; height: 360px;
     background: radial-gradient(circle, rgba(255,255,255,0.5), transparent 60%);
-    pointer-events: none;
-  }
-  header.hero::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: -40px;
-    width: 240px; height: 240px;
-    background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 60%);
     pointer-events: none;
   }
   .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
@@ -111,7 +104,7 @@
     -webkit-backdrop-filter: blur(8px);
     padding: 8px 14px;
     border-radius: 999px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
     box-shadow: var(--shadow-sm);
   }
   .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; }
@@ -122,33 +115,23 @@
 
   h1.hero-title {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(2.4rem, 9vw, 4.8rem);
+    font-size: clamp(2.4rem, 9vw, 4.4rem);
     font-weight: 900;
     letter-spacing: -0.035em;
     line-height: 0.95;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     color: var(--ink);
   }
   h1.hero-title .pink {
     color: var(--red);
     font-style: italic;
     font-weight: 700;
-    display: inline-block;
-  }
-  h1.hero-title .small {
-    display: block;
-    font-size: 0.6em;
-    font-weight: 500;
-    color: var(--ink-soft);
-    font-style: normal;
-    margin-top: 8px;
-    letter-spacing: -0.02em;
   }
   .sub {
-    font-size: clamp(1rem, 3.4vw, 1.2rem);
-    max-width: 620px;
+    font-size: clamp(1rem, 3.4vw, 1.15rem);
+    max-width: 580px;
     color: var(--ink-soft);
-    margin-bottom: 28px;
+    margin-bottom: 26px;
     font-weight: 400;
     line-height: 1.5;
   }
@@ -221,67 +204,112 @@
   /* MAIN */
   main { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
 
-  /* SUCCESS BANNER */
-  .success-banner {
-    margin-top: -36px;
-    background: linear-gradient(135deg, var(--ink) 0%, #2a1f1a 100%);
-    color: var(--sail);
-    padding: 26px 26px;
+  /* PHASE PANEL - the auto-updating "what to do today" card */
+  .phase {
+    margin-top: -34px;
+    background: var(--card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .phase-bar {
+    background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+    color: white;
+    padding: 12px 22px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 800;
+    text-transform: uppercase;
     display: flex;
     align-items: center;
-    gap: 22px;
-    flex-wrap: wrap;
-    position: relative;
-    overflow: hidden;
+    gap: 10px;
   }
-  .success-banner::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(247, 200, 208, 0.15), transparent 60%);
-    pointer-events: none;
+  .phase-bar .phase-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: white;
+    animation: pulse 2s infinite;
   }
-  .success-banner .pct {
+  .phase-body {
+    padding: 24px 24px 26px;
+  }
+  .phase-headline {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(2.6rem, 9vw, 3.4rem);
+    font-size: clamp(1.4rem, 4.5vw, 1.9rem);
     font-weight: 900;
-    color: var(--pink-200);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    color: var(--ink);
   }
-  .success-banner .why {
-    flex: 1;
-    min-width: 240px;
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.85);
+  .phase-headline .accent { color: var(--red); font-style: italic; font-weight: 700; }
+  .phase-detail {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
     line-height: 1.55;
   }
-  .success-banner .why strong { color: var(--pink-200); font-weight: 700; }
+  .phase-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .phase-cta:active { transform: scale(0.97); }
+  .phase-cta:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+  .phase-cta.pink { background: var(--red); }
 
-  /* TABS - mobile friendly */
+  /* MONITOR STATUS BADGE */
+  .monitor-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    background: var(--green);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .monitor-badge .pulse-dot {
+    width: 8px; height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse 1.6s infinite;
+  }
+  .monitor-badge.muted { background: var(--ink-mute); }
+
+  /* TABS */
   .tabs-wrap {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: var(--bg);
-    margin: 32px -18px 0;
+    margin: 36px -18px 0;
     padding: 0 18px;
     border-bottom: 1px solid var(--line);
+    background: rgba(253, 249, 238, 0.94);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: rgba(253, 249, 238, 0.92);
   }
   .tabs {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    gap: 2px;
+    gap: 0;
     scrollbar-width: none;
-    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     margin: 0 -18px;
     padding: 0 18px;
@@ -290,17 +318,15 @@
   .tab-btn {
     background: transparent;
     border: 0;
-    padding: 16px 16px;
+    padding: 16px 18px;
     font-family: inherit;
-    font-size: 0.92rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 700;
     color: var(--ink-mute);
     cursor: pointer;
     border-bottom: 3px solid transparent;
     white-space: nowrap;
     transition: color 0.2s, border-color 0.2s, transform 0.1s;
-    scroll-snap-align: start;
-    position: relative;
     flex-shrink: 0;
     min-height: 48px;
   }
@@ -310,190 +336,291 @@
     color: var(--ink);
     border-bottom-color: var(--red);
   }
-  .tab-btn .num {
-    display: inline-block;
-    background: var(--muslin);
-    color: var(--ink-soft);
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 7px;
-    margin-right: 7px;
-    transition: background 0.2s, color 0.2s;
-  }
-  .tab-btn.active .num { background: var(--red); color: white; }
 
-  .tab-panel { display: none; padding: 32px 0 20px; animation: fadein 0.3s ease; }
+  .tab-panel { display: none; padding: 30px 0 30px; animation: fadein 0.3s ease; }
   .tab-panel.active { display: block; }
   @keyframes fadein {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* SECTION */
+  /* SECTION HEADERS */
   h2 {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(1.7rem, 5.5vw, 2.4rem);
+    font-size: clamp(1.5rem, 5vw, 2rem);
     font-weight: 900;
     letter-spacing: -0.02em;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     line-height: 1.05;
   }
   h2 .accent { color: var(--red); font-style: italic; font-weight: 700; }
   .section-lede {
-    font-size: clamp(1rem, 3vw, 1.1rem);
+    font-size: 1.02rem;
     color: var(--ink-soft);
-    max-width: 680px;
-    margin-bottom: 28px;
+    max-width: 660px;
+    margin-bottom: 24px;
     line-height: 1.55;
   }
   h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     margin-bottom: 8px;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
     color: var(--ink);
   }
 
-  /* CARD GRID */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 14px;
+  /* RAFFLE BUTTONS - big tap targets */
+  .raffle-section {
     margin-bottom: 28px;
   }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 22px;
-    box-shadow: var(--shadow);
-    position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-  .card.highlight {
-    background: linear-gradient(180deg, white 0%, var(--pink-50) 100%);
-    border-left: 4px solid var(--red);
-  }
-  .card-label {
-    font-size: 10.5px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--ink-mute);
-    margin-bottom: 8px;
-  }
-  .card-value {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 1.7rem;
-    font-weight: 900;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
-    line-height: 1.05;
-  }
-  .card-note { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
-
-  /* STEP CARDS */
-  .step {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 22px;
-    margin-bottom: 14px;
-    box-shadow: var(--shadow);
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .step:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-  .step-num {
-    width: 42px; height: 42px;
-    flex-shrink: 0;
-    background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 900;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 12px rgba(200, 32, 45, 0.25);
-  }
-  .step-body { flex: 1; min-width: 0; }
-  .step-title {
+  .raffle-section h3 {
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
   }
-  .step-title h3 { margin-bottom: 0; }
-  .badge {
-    display: inline-block;
-    font-size: 9.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+  .raffle-section h3 .badge-count {
+    background: var(--muslin);
+    color: var(--ink-soft);
+    font-size: 11px;
     font-weight: 800;
-    padding: 4px 9px;
-    border-radius: 5px;
+    padding: 3px 9px;
+    border-radius: 999px;
   }
-  .badge.priority { background: var(--red); color: white; }
-  .badge.warm { background: var(--pink-200); color: var(--ink); }
-  .badge.cool { background: var(--muslin); color: var(--ink-soft); }
-  .badge.guarantee { background: var(--ink); color: var(--pink-200); }
 
-  .step p { margin-bottom: 10px; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
-  .step ul { padding-left: 20px; margin-bottom: 6px; }
-  .step ul li { margin-bottom: 8px; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.55; }
-  .step ul li::marker { color: var(--red); }
-  .step a { color: var(--red); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(200, 32, 45, 0.3); transition: border-color 0.15s; }
-  .step a:hover { border-bottom-color: var(--red); }
-
-  /* CHECKLIST */
-  .checklist {
-    list-style: none;
-    padding: 0;
-  }
-  .checklist li {
+  .raffle-btn {
     display: flex;
+    align-items: center;
     gap: 14px;
-    padding: 14px 16px;
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow-sm);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  .raffle-btn:active { transform: scale(0.99); background: var(--pink-50); }
+  .raffle-btn:hover {
+    border-color: var(--pink-300);
+    box-shadow: var(--shadow);
+  }
+  .raffle-btn.entered {
+    background: var(--muslin);
+    opacity: 0.7;
+  }
+  .raffle-btn .check {
+    width: 26px; height: 26px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .raffle-btn.entered .check {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+  }
+  .raffle-btn .name {
+    flex: 1;
+    min-width: 0;
+  }
+  .raffle-btn .name .title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .raffle-btn .name .meta {
+    font-size: 0.82rem;
+    color: var(--ink-mute);
+    line-height: 1.35;
+  }
+  .raffle-btn .arrow {
+    flex-shrink: 0;
+    color: var(--ink-mute);
+    font-size: 18px;
+  }
+  .raffle-btn.entered .arrow { display: none; }
+
+  /* DETAILS COPY WIDGET */
+  .copy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .copy-card {
+    background: var(--card);
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
-    margin-bottom: 8px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .copy-card:hover { border-color: var(--pink-300); background: var(--pink-50); }
+  .copy-card:active { background: var(--pink-100); }
+  .copy-card .label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--ink-mute);
+    margin-bottom: 2px;
+  }
+  .copy-card .value {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 600;
+    word-break: break-word;
+  }
+  .copy-card .copy-icon {
+    flex-shrink: 0;
+    color: var(--ink-mute);
+    font-size: 16px;
+  }
+  .copy-card.copied {
+    background: var(--green) !important;
+    border-color: var(--green);
+  }
+  .copy-card.copied .label,
+  .copy-card.copied .value,
+  .copy-card.copied .copy-icon { color: white !important; }
+  .copy-card .body { flex: 1; min-width: 0; }
+  .copy-card input {
+    background: transparent;
+    border: 0;
+    width: 100%;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 600;
+    font-family: inherit;
+    padding: 0;
+    outline: none;
+  }
+  .copy-card.editing { background: var(--pink-50); border-color: var(--pink-400); }
+  .copy-card.editing .copy-icon { display: none; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 28px; margin-top: 8px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--pink-300) 0%, var(--red) 100%);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 14px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .timeline-item.now {
+    border-left: 4px solid var(--red);
+    box-shadow: 0 8px 24px rgba(200,32,45,0.15);
+    background: linear-gradient(to right, var(--pink-50), white);
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 22px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ink-mute);
+    border: 3px solid var(--bg);
+  }
+  .timeline-item.passed::before { background: var(--ink-mute); opacity: 0.4; }
+  .timeline-item.now::before {
+    background: var(--red);
+    box-shadow: 0 0 0 4px rgba(200,32,45,0.2);
+    animation: tl-pulse 2s ease-in-out infinite;
+  }
+  .timeline-item.future::before { background: var(--pink-300); }
+  @keyframes tl-pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(200,32,45,0.2); }
+    50% { box-shadow: 0 0 0 8px rgba(200,32,45,0.05); }
+  }
+  .timeline-date {
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  .timeline-item.passed .timeline-date { color: var(--ink-mute); }
+  .timeline-item.future .timeline-date { color: var(--pink-500); }
+  .timeline-title {
+    font-weight: 700;
+    margin-bottom: 4px;
+    font-size: 0.98rem;
+  }
+  .timeline-detail {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* INFO STRIP */
+  .info-strip {
+    background: linear-gradient(135deg, var(--pink-100) 0%, var(--pink-200) 100%);
+    border-left: 4px solid var(--red);
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    margin: 16px 0;
+    color: var(--ink);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .info-strip strong { color: var(--red); font-weight: 700; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; margin: 0 0 18px; }
+  .checklist li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px;
     background: var(--card);
     cursor: pointer;
-    transition: background 0.15s, opacity 0.2s, border-color 0.15s;
-    min-height: 56px;
     align-items: flex-start;
   }
-  .checklist li:active { background: var(--pink-50); transform: scale(0.995); }
-  .checklist li:hover { border-color: var(--pink-300); }
-  .checklist li input {
-    margin-top: 2px;
-    cursor: pointer;
-    width: 22px;
-    height: 22px;
-    accent-color: var(--red);
-    flex-shrink: 0;
-  }
-  .checklist li.done {
-    opacity: 0.45;
-    background: var(--muslin);
-  }
+  .checklist li:active { background: var(--pink-50); }
+  .checklist li input { margin-top: 2px; width: 22px; height: 22px; accent-color: var(--red); flex-shrink: 0; }
+  .checklist li.done { opacity: 0.5; background: var(--muslin); }
   .checklist li.done label { text-decoration: line-through; }
-  .checklist li label { flex: 1; cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--ink); }
+  .checklist li label { flex: 1; cursor: pointer; font-size: 0.93rem; line-height: 1.5; color: var(--ink); }
 
   .progress-bar {
     height: 8px;
     background: var(--muslin-deep);
     border-radius: 999px;
     overflow: hidden;
-    margin: 16px 0 28px;
+    margin: 16px 0 22px;
   }
   .progress-fill {
     height: 100%;
@@ -507,123 +634,8 @@
     align-items: baseline;
     margin-bottom: 6px;
   }
-  .progress-label .l { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--ink-mute); }
-  .progress-label .v { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 900; color: var(--ink); }
-
-  /* TIMELINE */
-  .timeline { position: relative; padding-left: 28px; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 7px;
-    top: 12px;
-    bottom: 12px;
-    width: 2px;
-    background: linear-gradient(180deg, var(--pink-300) 0%, var(--red) 100%);
-  }
-  .timeline-item {
-    position: relative;
-    margin-bottom: 18px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s;
-  }
-  .timeline-item:hover { transform: translateX(4px); }
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -25px;
-    top: 22px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--red);
-    border: 3px solid var(--bg);
-  }
-  .timeline-item.critical::before {
-    box-shadow: 0 0 0 4px rgba(200,32,45,0.2);
-    animation: tl-pulse 2s ease-in-out infinite;
-  }
-  @keyframes tl-pulse {
-    0%, 100% { box-shadow: 0 0 0 4px rgba(200,32,45,0.2); }
-    50% { box-shadow: 0 0 0 8px rgba(200,32,45,0.05); }
-  }
-  .timeline-date {
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-weight: 800;
-    color: var(--red);
-    margin-bottom: 5px;
-  }
-  .timeline-title {
-    font-weight: 700;
-    margin-bottom: 6px;
-    font-size: 1rem;
-  }
-  .timeline-detail {
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    line-height: 1.55;
-  }
-
-  /* TABLE - mobile friendly */
-  .raffle-list {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-  .raffle-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--line);
-    transition: background 0.15s;
-  }
-  .raffle-row:last-child { border-bottom: 0; }
-  .raffle-row:hover { background: var(--pink-50); }
-  .raffle-row .name {
-    flex: 1;
-    min-width: 0;
-  }
-  .raffle-row .name a {
-    color: var(--red);
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 0.97rem;
-    word-break: break-word;
-  }
-  .raffle-row .name a:hover { text-decoration: underline; }
-  .raffle-row .meta {
-    font-size: 0.82rem;
-    color: var(--ink-mute);
-    margin-top: 3px;
-    line-height: 1.4;
-  }
-  .raffle-row .tag-col {
-    flex-shrink: 0;
-  }
-  .tag {
-    display: inline-block;
-    font-size: 9px;
-    font-weight: 800;
-    padding: 3px 7px;
-    border-radius: 4px;
-    background: var(--pink-200);
-    color: var(--ink);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  .tag.us { background: #dde7ff; color: #2842a8; }
-  .tag.eu { background: #e2f7d8; color: #2d6614; }
-  .tag.regional { background: #ffe7c0; color: #8a4d00; }
+  .progress-label .l { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); }
+  .progress-label .v { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 900; color: var(--ink); }
 
   /* CALLOUT */
   .callout {
@@ -631,7 +643,7 @@
     color: var(--sail);
     border-radius: var(--radius);
     padding: 22px 24px;
-    margin: 24px 0;
+    margin: 20px 0;
     position: relative;
     overflow: hidden;
   }
@@ -643,122 +655,34 @@
     background: radial-gradient(circle, rgba(247, 200, 208, 0.1), transparent 60%);
   }
   .callout h3 { color: var(--pink-200); margin-bottom: 8px; font-size: 1.05rem; position: relative; }
-  .callout p { color: rgba(255,255,255,0.82); margin-bottom: 0; font-size: 0.95rem; line-height: 1.6; position: relative; }
+  .callout p { color: rgba(255,255,255,0.82); margin-bottom: 0; font-size: 0.93rem; line-height: 1.6; position: relative; }
 
-  .info-strip {
-    background: linear-gradient(135deg, var(--pink-100) 0%, var(--pink-200) 100%);
-    border-left: 4px solid var(--red);
-    padding: 16px 20px;
-    border-radius: var(--radius-sm);
-    margin: 16px 0;
-    color: var(--ink);
-    font-size: 0.92rem;
-    line-height: 1.55;
-  }
-  .info-strip strong { color: var(--red); font-weight: 700; }
-
-  /* DATE STATUS BLOCK */
-  .date-status {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-left: 4px solid #1f9e4a;
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    margin-top: 14px;
-    box-shadow: var(--shadow);
-  }
-  .ds-row { display: flex; gap: 14px; align-items: flex-start; }
-  .ds-icon-wrap {
-    flex-shrink: 0;
-    width: 14px;
-    margin-top: 6px;
-    position: relative;
-  }
-  .ds-pulse {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: #1f9e4a;
-    box-shadow: 0 0 0 0 rgba(31, 158, 74, 0.4);
-    animation: ds-pulse 2s infinite;
-  }
-  @keyframes ds-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(31, 158, 74, 0.5); }
-    70% { box-shadow: 0 0 0 12px rgba(31, 158, 74, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(31, 158, 74, 0); }
-  }
-  .ds-body { flex: 1; min-width: 0; }
-  .ds-label {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 800;
-    color: #1f9e4a;
-    margin-bottom: 4px;
-  }
-  .ds-headline {
-    font-weight: 800;
-    font-size: 1rem;
-    color: var(--ink);
-    line-height: 1.3;
-    margin-bottom: 8px;
-    letter-spacing: -0.005em;
-  }
-  .ds-detail {
-    font-size: 0.88rem;
-    color: var(--ink-soft);
-    line-height: 1.55;
-    margin-bottom: 10px;
-  }
-  .ds-detail strong { color: var(--ink); font-weight: 700; }
-  .ds-sources {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .ds-sources a {
-    background: var(--muslin);
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 999px;
-    transition: background 0.15s;
-  }
-  .ds-sources a:hover { background: var(--muslin-deep); }
-
-  /* SHARE FAB */
-  .fab {
+  /* TOAST */
+  .toast {
     position: fixed;
-    bottom: calc(20px + env(safe-area-inset-bottom));
-    right: 20px;
-    background: var(--red);
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 100px);
+    background: var(--ink);
     color: white;
-    border: 0;
-    padding: 14px 20px;
+    padding: 12px 20px;
     border-radius: 999px;
-    font-family: inherit;
     font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(200, 32, 45, 0.35), 0 2px 6px rgba(200, 32, 45, 0.2);
-    z-index: 100;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.15s, box-shadow 0.15s;
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease;
+    z-index: 200;
+    pointer-events: none;
   }
-  .fab:active { transform: scale(0.95); }
-  .fab:hover { box-shadow: 0 8px 24px rgba(200, 32, 45, 0.45); }
+  .toast.show { transform: translate(-50%, 0); }
 
-  /* FOOTER */
   footer {
     text-align: center;
-    margin-top: 60px;
-    padding: 28px 18px;
+    margin-top: 40px;
+    padding: 24px 18px;
     color: var(--ink-mute);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
-  footer .heart { color: var(--red); }
   footer .signature {
     font-family: 'Fraunces', Georgia, serif;
     font-style: italic;
@@ -766,48 +690,28 @@
     color: var(--ink);
     margin-bottom: 6px;
   }
+  footer a { color: var(--ink-mute); text-decoration: underline; }
 
-  /* MOBILE */
   @media (max-width: 640px) {
-    header.hero { padding: 44px 20px 64px; }
+    header.hero { padding: 36px 18px 56px; }
     main { padding: 0 16px; }
-    .success-banner {
-      margin-top: -28px;
-      padding: 20px 22px;
-      border-radius: var(--radius);
-      gap: 12px;
-    }
-    .success-banner .pct { font-size: 2.4rem; }
-    .success-banner .why { font-size: 0.9rem; min-width: 100%; }
-    .step { flex-direction: row; gap: 14px; padding: 18px; }
-    .step-num { width: 36px; height: 36px; font-size: 1rem; }
-    .tab-btn { padding: 14px 12px; font-size: 0.85rem; }
-    .tab-btn .num { display: none; }
+    .phase { margin-top: -28px; border-radius: var(--radius); }
+    .phase-body { padding: 18px 18px 22px; }
+    .tab-btn { padding: 14px 14px; font-size: 0.88rem; }
     .meta-pill { font-size: 11.5px; padding: 7px 12px; }
-    .countdown { padding: 16px 18px; margin-top: 24px; }
+    .countdown { padding: 16px 18px; margin-top: 22px; }
     .timeline { padding-left: 24px; }
-    .timeline-item { padding: 14px 16px; }
+    .timeline-item { padding: 12px 14px; }
     .timeline-item::before { left: -23px; top: 18px; width: 10px; height: 10px; }
-    .raffle-row { padding: 12px 14px; gap: 10px; }
-    .card { padding: 18px; }
-    .card-value { font-size: 1.45rem; }
-    .checklist li { padding: 12px 14px; min-height: 52px; }
-    h2 { margin-bottom: 8px; }
-    .section-lede { margin-bottom: 22px; }
-    .fab { padding: 12px 18px; font-size: 0.85rem; bottom: calc(16px + env(safe-area-inset-bottom)); right: 16px; }
-  }
-
-  @media (max-width: 380px) {
-    .meta-row { gap: 6px; }
-    .meta-pill { font-size: 11px; padding: 6px 10px; }
-    .tab-btn { padding: 12px 10px; font-size: 0.8rem; }
+    .raffle-btn { padding: 14px 16px; gap: 12px; }
+    h2 { margin-bottom: 6px; }
+    .section-lede { margin-bottom: 18px; font-size: 0.96rem; }
   }
 
   @media print {
-    .tabs-wrap, .fab { display: none; }
+    .tabs-wrap { display: none; }
     .tab-panel { display: block !important; page-break-before: always; }
     .tab-panel:first-of-type { page-break-before: auto; }
-    header.hero { background: white; border-bottom: 2px solid black; }
   }
 </style>
 </head>
@@ -819,379 +723,235 @@
   <svg class="heart-deco h3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
 
   <div class="hero-inner">
-    <span class="eyebrow"><span class="dot"></span>Operation Shy Pink</span>
+    <span class="eyebrow"><span class="dot"></span>For Sam, with love</span>
     <h1 class="hero-title">
-      The plan to put<br>
-      the <span class="pink">Shy Pink</span><br>
-      on her feet.
-      <span class="small">Travis Scott x Air Jordan 1 Low OG SP</span>
+      Your <span class="pink">Shy Pinks</span><br>are coming.
     </h1>
-    <p class="sub">Two parallel tracks, fifteen plus retail entries, one resale lock as the floor. The math gets us to 100%. The only question is whether we get them at retail or pay a little extra to make sure.</p>
+    <p class="sub">Travis Scott x Air Jordan 1 Low. Drops May 22. We have a plan, a 24/7 monitor watching for the raffle, and an alert ready to fire to your phone the moment it goes live. You just have to follow the steps.</p>
     <div class="meta-row">
-      <span class="meta-pill">Drops <strong>May 22, 2026</strong></span>
+      <span class="meta-pill">Drops <strong>May 22</strong></span>
       <span class="meta-pill">Retail <strong>$155</strong></span>
-      <span class="meta-pill">Size <strong>W 8 / M 6.5</strong></span>
+      <span class="meta-pill">Size <strong>Women's 8</strong></span>
     </div>
     <div class="countdown" id="countdown">
       <div class="countdown-label">Time to Drop</div>
       <div class="countdown-value" id="cd-value">Loading</div>
+    </div>
+    <br>
+    <div class="monitor-badge" id="monitor-badge">
+      <span class="pulse-dot"></span>
+      <span id="monitor-status-text">Monitor watching live, 24/7</span>
     </div>
   </div>
 </header>
 
 <main>
 
-  <div class="success-banner">
-    <div class="pct">100%</div>
-    <div class="why">
-      <strong>Success rate, locked.</strong> Track 1 (retail) gives 15+ shots at $155. Track 2 (resale) is the floor. If retail wins, we cancel the bid. If retail loses, the bid was already in flight. There is no path where she does not get the shoe.
+  <!-- PHASE PANEL - auto-updates based on date -->
+  <div class="phase" id="phase">
+    <div class="phase-bar">
+      <span class="phase-dot"></span>
+      <span id="phase-label">PHASE</span>
     </div>
-  </div>
-
-  <div class="date-status">
-    <div class="ds-row">
-      <div class="ds-icon-wrap"><div class="ds-pulse"></div></div>
-      <div class="ds-body">
-        <div class="ds-label">Release Date Status</div>
-        <div class="ds-headline">May 22, 2026 - confirmed by every major source through May 3</div>
-        <div class="ds-detail">Cross-checked against 20+ outlets. SneakerNews (Apr 29), Uristocrat (May 3), House of Heat, Sneaker Freaker, KLEKT, Sneakerjagers, The Drop Date, Sneaktorious, and the leakers Nike releases reliably follow (@zsneakerheadz, @brandon1an, Sneaker Market) all confirm May 22, 2026, 10am ET / 7am PT. <strong>Nike will not officially confirm via SNKRS until ~1 to 2 weeks before drop, which is normal.</strong> If you see a source saying otherwise, send it.</div>
-        <div class="ds-sources">
-          <a href="https://sneakernews.com/2026/04/29/travis-scott-air-jordan-1-low-muslin-shy-pink-sail-university-red-iq7604-100/" target="_blank" rel="noopener">SneakerNews (Apr 29)</a>
-          <a href="https://uristocrat.com/travis-scotts-pink-pack-air-jordan-1-low-finally-has-a-date-and-its-a-departure/" target="_blank" rel="noopener">Uristocrat (May 3)</a>
-          <a href="http://hoh.news/yKedfU0q" target="_blank" rel="noopener">House of Heat</a>
-          <a href="https://www.sneakerfreaker.com/releases/travis-scott-air-jordan-1-low-pink-pack-price-buy-release-date" target="_blank" rel="noopener">Sneaker Freaker</a>
-        </div>
-      </div>
+    <div class="phase-body">
+      <div class="phase-headline" id="phase-headline">Loading...</div>
+      <div class="phase-detail" id="phase-detail"></div>
+      <div id="phase-cta-wrap"></div>
     </div>
   </div>
 
   <div class="tabs-wrap">
     <nav class="tabs" role="tablist">
-      <button class="tab-btn active" data-tab="overview"><span class="num">01</span>Overview</button>
-      <button class="tab-btn" data-tab="track1"><span class="num">02</span>Retail</button>
-      <button class="tab-btn" data-tab="track2"><span class="num">03</span>Resale</button>
-      <button class="tab-btn" data-tab="timeline"><span class="num">04</span>Timeline</button>
-      <button class="tab-btn" data-tab="raffles"><span class="num">05</span>Raffles</button>
-      <button class="tab-btn" data-tab="checklist"><span class="num">06</span>Checklist</button>
-      <button class="tab-btn" data-tab="size"><span class="num">07</span>Size</button>
+      <button class="tab-btn active" data-tab="today">Today</button>
+      <button class="tab-btn" data-tab="dropday">Drop Day</button>
+      <button class="tab-btn" data-tab="raffles">Raffles</button>
+      <button class="tab-btn" data-tab="status">Status</button>
     </nav>
   </div>
 
-  <section class="tab-panel active" id="overview">
-    <h2>The <span class="accent">strategy</span>, in three lines.</h2>
-    <p class="section-lede">Travis Scott Jordans are decided by raffle. Raffles favor volume. We attack volume from every direction, then back the entire operation with a resale safety net. Worst case: we paid a little more, but the shoe is on her feet.</p>
+  <!-- TODAY TAB -->
+  <section class="tab-panel active" id="today">
+    <h2>What we are <span class="accent">doing</span>.</h2>
+    <p class="section-lede">The path from now to the shoes on your feet, broken into chunks. The phase card above tells you what TODAY is about. Below is the full arc so you can see what is coming.</p>
 
-    <div class="card-grid">
-      <div class="card highlight">
-        <div class="card-label">Track One</div>
-        <div class="card-value">Retail Ladder</div>
-        <p class="card-note">15+ entries: Travis's website, SNKRS on multiple accounts, SNKRS Pass, Foot Locker reservation, 12+ boutique raffles US and EU. Realistic shot at $155: 25 to 45 percent.</p>
-      </div>
-      <div class="card highlight">
-        <div class="card-label">Track Two</div>
-        <div class="card-value">Resale Lock</div>
-        <p class="card-note">StockX or GOAT bid placed at our max the morning of May 22. Expected fill in W 8 / M 6.5: $400 to $600. Smaller sizes dip first, patient buyers pay less.</p>
-      </div>
-      <div class="card highlight">
-        <div class="card-label">Combined</div>
-        <div class="card-value">100% Success</div>
-        <p class="card-note">Track 1 has the upside, Track 2 has the certainty. They run independently. This is how we guarantee the shoe without betting on a sub-1 percent SNKRS draw.</p>
-      </div>
+    <div class="timeline" id="timeline-overview">
+      <!-- Filled by JS based on date -->
     </div>
-
-    <h2 style="margin-top: 40px;">What the shoe <span class="accent">actually is</span>.</h2>
-    <p class="section-lede">Travis Scott x Air Jordan 1 Low OG SP. Muslin and Shy Pink suede with a University Red reverse Swoosh, alternating Wings and Cactus Jack heel branding, heart motifs on the tongue tags, and a heart with arrow on the insole. Originally rumored as a Valentine's release. The romance is literally stitched into the shoe.</p>
 
     <div class="callout">
-      <h3>The honest truth other guides will not tell you</h3>
-      <p>The Fragment Mil Blue just set the all-time SNKRS record at 4.4 million entries. Pure-luck odds at retail are below 1 percent per entry. "Just enter SNKRS" is not a plan, it is a hope. The plan below treats retail as upside and resale as the floor. That is how this becomes 100 percent instead of 12 percent.</p>
+      <h3>How this works</h3>
+      <p>A monitor on Justin's iMac is checking the Travis Scott website every 60 seconds. Sole Retriever every 2 minutes. Eight news sources every morning at 7am. The instant any of them shows the raffle is live, your phone buzzes with a 🚨 alert and a tap-to-open link. You will not miss it.</p>
     </div>
   </section>
 
-  <section class="tab-panel" id="track1">
-    <h2>Track 1: <span class="accent">The Retail Ladder</span></h2>
-    <p class="section-lede">Six rungs. Each one is a free or cheap shot at $155 retail. Climb every rung, even the ones that feel like long shots. Volume is what turns sub-1 percent odds into a real chance.</p>
+  <!-- DROP DAY TAB -->
+  <section class="tab-panel" id="dropday">
+    <h2>The <span class="accent">drop day</span> playbook.</h2>
+    <p class="section-lede">May 22, 2026. All times Arizona (MST). The monitor will be sending you push messages all morning so you know exactly what to do, when. This is the same plan written down so you can reference it.</p>
 
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>travisscott.com (drops first)</h3>
-          <span class="badge priority">Priority</span>
-        </div>
-        <p>Travis loads the raffle on his own site 5 to 10 days before SNKRS. The Reverse Mocha pulled 2.4 million entries in 30 minutes. Watch <a href="https://aj1low.travisscott.com/" target="_blank" rel="noopener">aj1low.travisscott.com</a> and <a href="https://shop.travisscott.com/" target="_blank" rel="noopener">shop.travisscott.com</a>.</p>
-        <ul>
-          <li>Sign up for the email list at travisscott.com on every email address.</li>
-          <li>Install Sole Retriever app, push notifications on for Travis Scott alerts.</li>
-          <li>Page loads with "SOON" first, then the raffle window opens with little warning. Be ready.</li>
-        </ul>
+    <div class="timeline" id="dropday-timeline">
+      <div class="timeline-item future" data-time="06:30">
+        <div class="timeline-date">6:30 am AZ</div>
+        <div class="timeline-title">Wake up, pre-flight check</div>
+        <div class="timeline-detail">Monitor pings you. Open SNKRS app on every device. Log out and back in. Make sure Apple Pay is loaded and address is correct.</div>
+      </div>
+      <div class="timeline-item future" data-time="06:55">
+        <div class="timeline-date">6:55 am AZ</div>
+        <div class="timeline-title">Five minutes to drop</div>
+        <div class="timeline-detail">Open SNKRS app. Navigate to Shy Pink page. Stable WiFi over cellular. Have phone, laptop, and any other device ready.</div>
+      </div>
+      <div class="timeline-item future critical" data-time="07:00">
+        <div class="timeline-date">7:00 am AZ</div>
+        <div class="timeline-title">SNKRS LAUNCH - enter the draw</div>
+        <div class="timeline-detail">Tap "Enter Draw" on Shy Pink page. Use Apple Pay. Confirm. Repeat on every account you have access to. Do not spam-tap, just one clean entry per account.</div>
+      </div>
+      <div class="timeline-item future" data-time="07:30">
+        <div class="timeline-date">7:30 am AZ</div>
+        <div class="timeline-title">Place StockX backup bid</div>
+        <div class="timeline-detail">Justin will handle this. Lock in our price ceiling on resale so worst case we still get the shoe.</div>
+      </div>
+      <div class="timeline-item future" data-time="10:00">
+        <div class="timeline-date">10am - 2pm AZ</div>
+        <div class="timeline-title">Watch for SNKRS Pass + Shock Drop</div>
+        <div class="timeline-detail">Surprise in-store reservations can drop here. Monitor will alert you. If you get a Pass, drive to the Phoenix Nike store same day to pick up.</div>
       </div>
     </div>
 
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>Nike SNKRS, multiple legitimate accounts</h3>
-          <span class="badge priority">Priority</span>
-        </div>
-        <p>Each account needs unique phone, email, payment, and ideally device. Recruit 3 to 5 trusted humans.</p>
-        <ul>
-          <li>You, fiancee, parents, siblings, 2 to 3 close friends.</li>
-          <li>Warm each daily: open app, watch a Behind the Design video, vote on any poll, hit Notify Me on Shy Pink. Engagement helps Exclusive Access.</li>
-          <li>Night before May 22: log out, log back in, confirm Apple Pay, confirm address.</li>
-          <li>10am ET, May 22. Enter within first 60 seconds. Do not spam-tap.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>SNKRS Pass / Hub (Phoenix in-person)</h3>
-          <span class="badge warm">Hidden Edge</span>
-        </div>
-        <p>SNKRS Pass loads at flagship Nike stores with dramatically smaller pools than the nationwide draw. Must be within 25 miles of the store when you open the app.</p>
-        <ul>
-          <li>Phoenix candidates: Nike Kierland Commons, Scottsdale Fashion Square, Chandler Fashion Center.</li>
-          <li>Watch SNKRS app between 1 and 5pm ET on release day. Shock Drops happen in this window too.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>Boutique raffle barrage</h3>
-          <span class="badge priority">Priority</span>
-        </div>
-        <p>Smaller stores, smaller entry pools. Aim for 12 to 15 entries the week of release. Full list on the <strong>Raffles</strong> tab.</p>
-        <ul>
-          <li>Region-locked pools punch hardest: Trophy Room (FL only), Xhibition (OH/MI only). Family in those states can enter for you.</li>
-          <li>EU/UK retailers (END, BSTN, SNS, Solebox, Foot Patrol, Slam Jam) ship to US.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">5</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>Foot Locker reservation</h3>
-          <span class="badge cool">Free shot</span>
-        </div>
-        <p>Submit Foot Locker app reservation 3 to 5 days before release. House of Hoops Phoenix sometimes gets unannounced allocations. Costs nothing, takes 2 minutes.</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">6</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>Re-raffles and cancelled-order restocks</h3>
-          <span class="badge warm">Sleeper</span>
-        </div>
-        <p>This is where most people give up and most last-minute wins happen.</p>
-        <ul>
-          <li>Boutiques re-raffle unclaimed wins within 24 to 72 hours. Follow every raffling boutique on Instagram.</li>
-          <li>SNKRS cancelled-order restocks: Mon to Thu, 10 to 10:30am ET. Restock alert services ping faster than Nike.</li>
-        </ul>
-      </div>
+    <div class="callout">
+      <h3>If we win at retail</h3>
+      <p>You get an email from Nike or the boutique confirming your order. Reply YES to Justin so he cancels the resale backup bid. Shoes ship in a few days. We celebrate.</p>
     </div>
   </section>
 
-  <section class="tab-panel" id="track2">
-    <h2>Track 2: <span class="accent">The Resale Lock</span></h2>
-    <p class="section-lede">This turns the plan from "we hope" into "we have it." Resale is the floor. We set it on May 22, sleep at night, and if retail wins we cancel the bid.</p>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-label">Expected Floor</div>
-        <div class="card-value">$400 - $600</div>
-        <p class="card-note">Based on past Travis AJ1 Low resale arcs. W 8 / M 6.5 sits in the smaller-size band where prices run $50 to $100 below the men's hot zone.</p>
-      </div>
-      <div class="card">
-        <div class="card-label">Best Buy Window</div>
-        <div class="card-value">Day 14 - 21</div>
-        <p class="card-note">Travis Scott resale almost always dips 15 to 25 percent from launch peak as flippers liquidate. Wait three weeks, save $100 to $200.</p>
-      </div>
-      <div class="card">
-        <div class="card-label">Worst Case</div>
-        <div class="card-value">~$700</div>
-        <p class="card-note">Even at panic-day pricing, shoe is in hand within 7 to 10 days post-release. The plan still wins.</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>StockX bid (primary)</h3>
-          <span class="badge guarantee">The Floor</span>
-        </div>
-        <p>Place a Bid at max price the morning of May 22. Bidding (not buying outright) lets us set the ceiling instead of taking the seller's ask.</p>
-        <ul>
-          <li>Search "Air Jordan 1 Low OG SP Travis Scott Shy Pink" or SKU IQ7604-100.</li>
-          <li>Filter to size W 8 / M 6.5.</li>
-          <li>Open the Bid book, place yours $5 to $10 above the current high to be next in line.</li>
-          <li>Fill triggers authentication, ships in 7 to 10 days.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>GOAT bid (parallel)</h3>
-          <span class="badge cool">Backup</span>
-        </div>
-        <p>Same play on GOAT. Often $20 to $40 cheaper in the first 48 hours because their verification queue is slower. Sellers list lower to clear faster.</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>eBay Authenticity Guaranteed</h3>
-          <span class="badge warm">Hidden Edge</span>
-        </div>
-        <p>eBay authenticates Travis Scott Jordans free over $150. Listings often run $50 to $100 below StockX because casual sellers price emotionally, not algorithmically. Filter for New + Authenticity Guaranteed + W 8 / M 6.5.</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-body">
-        <div class="step-title">
-          <h3>The patient play: Day 14 to 21 dip</h3>
-          <span class="badge cool">Best Value</span>
-        </div>
-        <p>If she can wait three weeks, the resale curve almost always corrects 15 to 25 percent below launch peak as flippers dump unsold inventory. Set price alerts on StockX, buy on the dip.</p>
-      </div>
-    </div>
-
-    <div class="info-strip">
-      <strong>Hard rule.</strong> Only buy from Authenticity Guaranteed (eBay), StockX, or GOAT. Never from a random Instagram seller, Discord DM, or "deal" on Facebook Marketplace. Travis Scott shoes are the most counterfeited sneaker on the planet. Spending $400 on a real pair is the only acceptable outcome.
-    </div>
-  </section>
-
-  <section class="tab-panel" id="timeline">
-    <h2>The <span class="accent">17-day</span> countdown.</h2>
-    <p class="section-lede">Today is May 5. Drop is May 22 at 10am ET. Here is what happens, when. Date is monitored daily - if it shifts, every step shifts with it.</p>
-
-    <div class="info-strip">
-      <strong>Why we trust May 22.</strong> Confirmed by the same leakers who called every Travis drop in the last 3 years (@zsneakerheadz, @brandon1an, Sneaker Market). Posted as recently as May 3 by uristocrat.com and April 29 by SneakerNews. Travis was photographed wearing the shoe at an Atlanta Hawks game on April 23 - the smoke is fresh. Nike will officially confirm via SNKRS app 1 to 2 weeks before drop, which is normal.
-    </div>
-
-
-    <div class="timeline">
-      <div class="timeline-item critical">
-        <div class="timeline-date">Today / May 5</div>
-        <div class="timeline-title">Foundation day</div>
-        <div class="timeline-detail">Sign up for travisscott.com email list on every email. Verify SNKRS account info. Recruit 3 to 5 humans. Install Sole Retriever app. Bookmark sneaktorious and snkrempire raffle pages.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">May 5 - 14</div>
-        <div class="timeline-title">Account warming</div>
-        <div class="timeline-detail">Daily SNKRS app activity on every account. One Behind the Design video, one poll, one product browse. Five minutes per account per day.</div>
-      </div>
-      <div class="timeline-item critical">
-        <div class="timeline-date">May 12 - 18</div>
-        <div class="timeline-title">travisscott.com raffle window</div>
-        <div class="timeline-detail">Travis loads the raffle on his own site, typically 5 to 10 days before SNKRS. Enter the moment Sole Retriever pings. Use multiple email addresses.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">May 19 - 21</div>
-        <div class="timeline-title">Boutique raffles open</div>
-        <div class="timeline-detail">Enter all 12 to 15 boutique raffles (US plus EU). Submit Foot Locker reservation. Hit Trophy Room (FL) and Xhibition (OH/MI) via family in those states.</div>
-      </div>
-      <div class="timeline-item critical">
-        <div class="timeline-date">May 22, 9:30am ET</div>
-        <div class="timeline-title">Pre-flight check</div>
-        <div class="timeline-detail">Log out and back in on every SNKRS account. Apple Pay loaded. Address confirmed. Stable WiFi over cellular.</div>
-      </div>
-      <div class="timeline-item critical">
-        <div class="timeline-date">May 22, 10:00am ET</div>
-        <div class="timeline-title">SNKRS launch</div>
-        <div class="timeline-detail">Enter on every account within first 60 seconds. Apple Pay or Google Pay. Do not enter from multiple devices on the same account.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">May 22, 10:30am ET</div>
-        <div class="timeline-title">Place StockX and GOAT bids</div>
-        <div class="timeline-detail">Track 2 activates. Bid max for W 8 / M 6.5 on both platforms. The bid is your floor, not your ceiling.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">May 22, 1 - 5pm ET</div>
-        <div class="timeline-title">SNKRS Pass / Shock Drop window</div>
-        <div class="timeline-detail">Watch SNKRS app. Pass loads at Phoenix flagships, Shock Drops happen here too.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">May 23 - 25</div>
-        <div class="timeline-title">Re-raffle and restock window</div>
-        <div class="timeline-detail">Boutique re-raffles for unclaimed wins. SNKRS cancelled-order restocks (Mon to Thu, 10 to 10:30am ET). Many sleeper wins live here.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">June 5 - 12</div>
-        <div class="timeline-title">The dip</div>
-        <div class="timeline-detail">If retail did not hit, this is the resale buy window. Prices typically correct 15 to 25 percent below launch peak. Buy in W 8 / M 6.5.</div>
-      </div>
-    </div>
-  </section>
-
+  <!-- RAFFLES TAB -->
   <section class="tab-panel" id="raffles">
-    <h2>The <span class="accent">boutique raffle</span> master list.</h2>
-    <p class="section-lede">Enter every single one. Volume converts low odds into real probability. Most ship to US. Region-locked ones have the best odds, treat them like a cheat code if you have family or friends in the right state.</p>
+    <h2>One-tap <span class="accent">raffle entry</span>.</h2>
+    <p class="section-lede">Tap any shop to open the raffle in a new tab. After you enter, tap the circle on the left to mark it done. Your details below copy with one tap so you can paste them into any form.</p>
 
-    <h3 style="margin: 24px 0 12px;">US national</h3>
-    <div class="raffle-list">
-      <div class="raffle-row"><div class="name"><a href="https://travisscott.com" target="_blank" rel="noopener">Travis Scott</a><div class="meta">Email raffle on his site, drops earliest</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.nike.com/launch" target="_blank" rel="noopener">Nike SNKRS</a><div class="meta">App LEO draw, 10am ET May 22</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.a-ma-maniere.com" target="_blank" rel="noopener">A Ma Maniere</a><div class="meta">Atlanta, Tier-0 Jordan partner</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://kith.com" target="_blank" rel="noopener">KITH</a><div class="meta">NY/LA/Miami, online entry</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://undefeated.com" target="_blank" rel="noopener">Undefeated</a><div class="meta">National pickup or shipping</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://bdgastore.com" target="_blank" rel="noopener">Bodega</a><div class="meta">Boston-based</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://feature.com" target="_blank" rel="noopener">Feature</a><div class="meta">Las Vegas</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.sneakerpolitics.com" target="_blank" rel="noopener">Sneaker Politics</a><div class="meta">New Orleans</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://cncpts.com" target="_blank" rel="noopener">Concepts</a><div class="meta">Boston</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://extrabutterny.com" target="_blank" rel="noopener">Extra Butter</a><div class="meta">NYC</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://stashedsf.com" target="_blank" rel="noopener">Stashed</a><div class="meta">SF</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://notreshop.com" target="_blank" rel="noopener">Notre</a><div class="meta">Chicago</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.likelihood.us" target="_blank" rel="noopener">Likelihood</a><div class="meta">Seattle</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.soleclassics.com" target="_blank" rel="noopener">Sole Classics</a><div class="meta">Columbus OH</div></div><div class="tag-col"><span class="tag us">US</span></div></div>
+    <h3 style="margin-top: 8px;">Your details (tap to copy)</h3>
+    <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 14px;">Tap a card to copy. Tap and hold to edit. Saves automatically on this device.</p>
+    <div class="copy-grid" id="copy-grid">
+      <!-- Filled by JS -->
     </div>
 
-    <h3 style="margin: 28px 0 12px;">Region-locked (best odds if you qualify)</h3>
-    <div class="raffle-list">
-      <div class="raffle-row"><div class="name"><a href="https://www.trophyroomstore.com" target="_blank" rel="noopener">Trophy Room</a><div class="meta">Florida residents only - Marcus Jordan's store, smallest Tier-0 pool</div></div><div class="tag-col"><span class="tag regional">FL</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.xhibition.co" target="_blank" rel="noopener">Xhibition</a><div class="meta">Ohio and Michigan only - tiny pool, ID-verified pickup</div></div><div class="tag-col"><span class="tag regional">OH/MI</span></div></div>
+    <div class="raffle-section">
+      <h3>The big one <span class="badge-count">opens first</span></h3>
+      <a class="raffle-btn" data-raffle="travis" href="https://travisscott.com" target="_blank" rel="noopener">
+        <span class="check">✓</span>
+        <span class="name">
+          <div class="title">Travis Scott website</div>
+          <div class="meta">Drops 5-10 days before SNKRS - biggest shot at retail</div>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="snkrs" href="https://www.nike.com/launch" target="_blank" rel="noopener">
+        <span class="check">✓</span>
+        <span class="name">
+          <div class="title">Nike SNKRS app</div>
+          <div class="meta">May 22 at 7am AZ - make sure app is logged in tonight</div>
+        </span>
+        <span class="arrow">→</span>
+      </a>
     </div>
 
-    <h3 style="margin: 28px 0 12px;">EU / UK (most ship to US)</h3>
-    <div class="raffle-list">
-      <div class="raffle-row"><div class="name"><a href="https://launches.endclothing.com" target="_blank" rel="noopener">END Clothing</a><div class="meta">UK - largest EU pool, ships worldwide</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://raffle.bstn.com" target="_blank" rel="noopener">BSTN</a><div class="meta">Germany - confirmed on Shy Pink raffle list</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.solebox.com" target="_blank" rel="noopener">Solebox</a><div class="meta">Germany - Tier-0 EU partner</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.sneakersnstuff.com" target="_blank" rel="noopener">SNS (Sneakersnstuff)</a><div class="meta">Sweden - app raffle, ships globally</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.footpatrol.com" target="_blank" rel="noopener">Foot Patrol</a><div class="meta">UK - app raffle, in-store London pickup</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.slamjam.com" target="_blank" rel="noopener">Slam Jam</a><div class="meta">Italy</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://footdistrict.com" target="_blank" rel="noopener">Foot District</a><div class="meta">Spain</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://shop.doverstreetmarket.com" target="_blank" rel="noopener">Dover Street Market</a><div class="meta">UK / Global - multiple region raffles</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://www.afew-store.com" target="_blank" rel="noopener">AFEW</a><div class="meta">Germany</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
-      <div class="raffle-row"><div class="name"><a href="https://en.titolo.ch" target="_blank" rel="noopener">Titolo</a><div class="meta">Switzerland</div></div><div class="tag-col"><span class="tag eu">EU</span></div></div>
+    <div class="raffle-section">
+      <h3>US boutiques <span class="badge-count">12 stores</span></h3>
+      <a class="raffle-btn" data-raffle="amaman" href="https://www.a-ma-maniere.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">A Ma Maniere</div><div class="meta">Atlanta - Tier-0 Jordan partner</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="kith" href="https://kith.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">KITH</div><div class="meta">NY / LA / Miami - customer drawing</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="undefeated" href="https://undefeated.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Undefeated</div><div class="meta">National - ships everywhere</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="bodega" href="https://bdgastore.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Bodega</div><div class="meta">Boston</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="feature" href="https://feature.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Feature</div><div class="meta">Las Vegas</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="snkpolitics" href="https://www.sneakerpolitics.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Sneaker Politics</div><div class="meta">New Orleans</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="concepts" href="https://cncpts.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Concepts</div><div class="meta">Boston</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="extrabutter" href="https://extrabutterny.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Extra Butter</div><div class="meta">NYC</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="stashed" href="https://stashedsf.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Stashed</div><div class="meta">San Francisco</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="notre" href="https://notreshop.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Notre</div><div class="meta">Chicago</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="likelihood" href="https://www.likelihood.us" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Likelihood</div><div class="meta">Seattle</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="soleclassics" href="https://www.soleclassics.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Sole Classics</div><div class="meta">Columbus, OH</div></span><span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="raffle-section">
+      <h3>EU / UK <span class="badge-count">ship to US</span></h3>
+      <a class="raffle-btn" data-raffle="end" href="https://launches.endclothing.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">END Clothing</div><div class="meta">UK - largest international raffle pool</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="bstn" href="https://raffle.bstn.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">BSTN</div><div class="meta">Germany</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="solebox" href="https://www.solebox.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Solebox</div><div class="meta">Germany</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="sns" href="https://www.sneakersnstuff.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">SNS</div><div class="meta">Sweden</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="footpatrol" href="https://www.footpatrol.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Foot Patrol</div><div class="meta">UK</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="slamjam" href="https://www.slamjam.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Slam Jam</div><div class="meta">Italy</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="footdistrict" href="https://footdistrict.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Foot District</div><div class="meta">Spain</div></span><span class="arrow">→</span>
+      </a>
+      <a class="raffle-btn" data-raffle="dsm" href="https://shop.doverstreetmarket.com" target="_blank" rel="noopener">
+        <span class="check">✓</span><span class="name"><div class="title">Dover Street Market</div><div class="meta">UK / global</div></span><span class="arrow">→</span>
+      </a>
     </div>
 
     <div class="info-strip">
-      <strong>Pro tip.</strong> Some boutiques pre-authorize the full retail price plus shipping when you enter. Make sure your card has $300 free per entry. Funds release within 5 business days for non-winners.
+      <strong>Heads up.</strong> Some boutiques pre-authorize the full retail price plus shipping when you enter. Make sure your card has $300 free per entry. Funds are released within 5 business days for non-winners.
     </div>
   </section>
 
-  <section class="tab-panel" id="checklist">
-    <h2>The <span class="accent">action</span> checklist.</h2>
-    <p class="section-lede">Tap each item to mark it done. Progress saves automatically on this device.</p>
+  <!-- STATUS TAB -->
+  <section class="tab-panel" id="status">
+    <h2>The <span class="accent">monitor</span>.</h2>
+    <p class="section-lede">Three watchers running 24/7 on Justin's iMac. They are looking for any sign that the Shy Pink raffle is live or being set up. The moment they see anything, your phone buzzes.</p>
+
+    <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 24px;">
+      <div style="background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--green);">
+        <div style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); margin-bottom: 6px;">Travis Scott Site</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; line-height: 1.05; color: var(--ink); margin-bottom: 6px;">Every 60 sec</div>
+        <div style="font-size: 0.88rem; color: var(--ink-soft);">Watches the homepage and shop subdomain for the raffle going live. Detects the password gate dropping.</div>
+      </div>
+      <div style="background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--green);">
+        <div style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); margin-bottom: 6px;">Sole Retriever</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; line-height: 1.05; color: var(--ink); margin-bottom: 6px;">Every 2 min</div>
+        <div style="font-size: 0.88rem; color: var(--ink-soft);">The fastest sneaker news source. Posts "raffle is live" articles within seconds.</div>
+      </div>
+      <div style="background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--green);">
+        <div style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 800; color: var(--ink-mute); margin-bottom: 6px;">Date Watch</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; line-height: 1.05; color: var(--ink); margin-bottom: 6px;">Daily 7am</div>
+        <div style="font-size: 0.88rem; color: var(--ink-soft);">Verifies 8 news sources still confirm May 22. Alerts if any flips.</div>
+      </div>
+    </div>
+
+    <h3 style="margin: 20px 0 10px;">Your warm-up checklist</h3>
+    <p style="font-size: 0.88rem; color: var(--ink-mute); margin-bottom: 12px;">Tap each box. Saves automatically. The more boxes checked, the better our odds.</p>
 
     <div class="progress-label">
       <span class="l">Progress</span>
@@ -1199,106 +959,174 @@
     </div>
     <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width: 0%"></div></div>
 
-    <h3 style="margin: 20px 0 10px;">Today (May 5) - Foundation</h3>
     <ul class="checklist">
-      <li><input type="checkbox" id="c1"><label for="c1">Sign up for email list at travisscott.com on every email address you control</label></li>
-      <li><input type="checkbox" id="c2"><label for="c2">Install Sole Retriever app, enable push notifications</label></li>
-      <li><input type="checkbox" id="c3"><label for="c3">Verify SNKRS account: payment (Apple Pay), shipping address, phone</label></li>
-      <li><input type="checkbox" id="c4"><label for="c4">Recruit 3 to 5 humans to enter for you (each needs unique phone, email, payment)</label></li>
-      <li><input type="checkbox" id="c5"><label for="c5">Bookmark sneaktorious.com Shy Pink raffle list</label></li>
-      <li><input type="checkbox" id="c6"><label for="c6">Bookmark snkrempire.com Shy Pink raffle list</label></li>
-      <li><input type="checkbox" id="c7"><label for="c7">Identify family or friends in Florida (Trophy Room) and Ohio/Michigan (Xhibition)</label></li>
+      <li><input type="checkbox" id="c1"><label for="c1">Email signed up at travisscott.com</label></li>
+      <li><input type="checkbox" id="c2"><label for="c2">Sole Retriever app installed, push notifications on</label></li>
+      <li><input type="checkbox" id="c3"><label for="c3">SNKRS app: Apple Pay loaded, address verified</label></li>
+      <li><input type="checkbox" id="c4"><label for="c4">SNKRS app: hit Notify Me on Shy Pink page</label></li>
+      <li><input type="checkbox" id="c5"><label for="c5">Daily SNKRS warming: 1 video + 1 poll vote</label></li>
+      <li><input type="checkbox" id="c6"><label for="c6">Foot Locker app reservation submitted (May 19)</label></li>
+      <li><input type="checkbox" id="c7"><label for="c7">All boutique raffles entered (Raffles tab)</label></li>
     </ul>
-
-    <h3 style="margin: 26px 0 10px;">Daily through May 21 - Account Warming + Date Watch</h3>
-    <ul class="checklist">
-      <li><input type="checkbox" id="w1"><label for="w1">Open SNKRS app on every account, watch one Behind the Design video</label></li>
-      <li><input type="checkbox" id="w2"><label for="w2">Vote on any poll, browse one product, hit Notify Me on Shy Pink</label></li>
-      <li><input type="checkbox" id="w3"><label for="w3">Check travisscott.com daily for the Shy Pink raffle going live</label></li>
-      <li><input type="checkbox" id="w4"><label for="w4">Verify date hasn't shifted: refresh Sole Retriever app, House of Heat, SneakerNews</label></li>
-      <li><input type="checkbox" id="w5"><label for="w5">Check Twitter/X for @zsneakerheadz, @brandon1an for any date update</label></li>
-    </ul>
-
-    <h3 style="margin: 26px 0 10px;">Boutique Sweep (May 19 - 21)</h3>
-    <ul class="checklist">
-      <li><input type="checkbox" id="b1"><label for="b1">Enter A Ma Maniere raffle</label></li>
-      <li><input type="checkbox" id="b2"><label for="b2">Enter KITH customer drawing</label></li>
-      <li><input type="checkbox" id="b3"><label for="b3">Enter Undefeated, Bodega, Feature, Sneaker Politics, Concepts</label></li>
-      <li><input type="checkbox" id="b4"><label for="b4">Enter Extra Butter, Stashed, Notre, Likelihood, Sole Classics</label></li>
-      <li><input type="checkbox" id="b5"><label for="b5">Enter Trophy Room (FL relative) and Xhibition (OH/MI relative)</label></li>
-      <li><input type="checkbox" id="b6"><label for="b6">Enter END Clothing, BSTN, Solebox, SNS, Foot Patrol</label></li>
-      <li><input type="checkbox" id="b7"><label for="b7">Enter Slam Jam, Foot District, DSM, AFEW, Titolo</label></li>
-      <li><input type="checkbox" id="b8"><label for="b8">Submit Foot Locker app reservation</label></li>
-    </ul>
-
-    <h3 style="margin: 26px 0 10px;">Drop Day (May 22)</h3>
-    <ul class="checklist">
-      <li><input type="checkbox" id="d1"><label for="d1">9:30am ET: log out and back in on every SNKRS account, verify all info</label></li>
-      <li><input type="checkbox" id="d2"><label for="d2">9:55am ET: every account opens SNKRS, navigates to Shy Pink page</label></li>
-      <li><input type="checkbox" id="d3"><label for="d3">10:00am ET: enter draw within first 60 seconds on every account</label></li>
-      <li><input type="checkbox" id="d4"><label for="d4">10:30am ET: place StockX bid for W 8 / M 6.5 at max price</label></li>
-      <li><input type="checkbox" id="d5"><label for="d5">10:35am ET: place GOAT bid (parallel)</label></li>
-      <li><input type="checkbox" id="d6"><label for="d6">1 to 5pm ET: monitor SNKRS for Pass or Shock Drop</label></li>
-    </ul>
-
-    <h3 style="margin: 26px 0 10px;">Post-Drop (May 23 - June 12)</h3>
-    <ul class="checklist">
-      <li><input type="checkbox" id="p1"><label for="p1">Days 1 to 3: monitor boutique IG accounts for re-raffle posts</label></li>
-      <li><input type="checkbox" id="p2"><label for="p2">Mon-Thu mornings 10am ET: watch SNKRS for restocks</label></li>
-      <li><input type="checkbox" id="p3"><label for="p3">Set StockX price alert for W 8 / M 6.5 at target buy price</label></li>
-      <li><input type="checkbox" id="p4"><label for="p4">Day 14 to 21: if no win, execute resale buy on the dip</label></li>
-      <li><input type="checkbox" id="p5"><label for="p5">If retail won, cancel any open StockX/GOAT bids</label></li>
-    </ul>
-  </section>
-
-  <section class="tab-panel" id="size">
-    <h2>The <span class="accent">size 8</span> edge.</h2>
-    <p class="section-lede">Her size is actually a strategic advantage. Here is how to play it.</p>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-label">Conversion</div>
-        <div class="card-value">W 8 = M 6.5</div>
-        <p class="card-note">Jordan 1 women's-to-men's standard offset is 1.5 sizes. Shy Pink runs in men's sizing (M 4 to M 14 plus preschool), so M 6.5 is your target on every raffle and resale platform.</p>
-      </div>
-      <div class="card">
-        <div class="card-label">Retail Odds</div>
-        <div class="card-value">Above average</div>
-        <p class="card-note">M 6.5 sits below the most-contested band (M 8 to M 10). On hyped Travis releases, smaller sizes consistently fill at lower competition rates. Friendlier raffle math than the average entrant.</p>
-      </div>
-      <div class="card">
-        <div class="card-label">Resale Floor</div>
-        <div class="card-value">$50-$100 less</div>
-        <p class="card-note">Smaller sizes resell at a slight discount to hot-zone men's sizes because the buyer pool is smaller. Plan for $400 to $550 fill rather than the $500 to $700 men's-mid range.</p>
-      </div>
-    </div>
 
     <div class="callout">
-      <h3>Size strategy in one line</h3>
-      <p>Enter every raffle at M 6.5. Bid resale at M 6.5. If a retailer offers women's sizing fields specifically (rare for this drop), use Women's 8.</p>
-    </div>
-
-    <h3 style="margin: 30px 0 10px;">If unsure between two sizes</h3>
-    <p style="color: var(--ink-soft); margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6;">Travis Scott AJ1 Lows generally fit true to size. If she is between W 7.5 and W 8, go W 8 (M 6.5). If between W 8 and W 8.5, also go W 8. The Low silhouette is forgiving and lacing tightens the midfoot.</p>
-
-    <div class="info-strip">
-      <strong>Verify before bidding.</strong> Have her try on any Jordan 1 Low she or a friend owns. The 2026 Shy Pink uses the same last as past Travis AJ1 Lows. If a M 6.5 fits, you are locked. If not, adjust to M 7 (= W 8.5) or M 6 (= W 7.5).
+      <h3>If something feels off</h3>
+      <p>Text Justin. The monitor only fires for real signals. If you get a buzz from "Operation Shy Pink," it is real. If you do not get a buzz for hours and you are worried, that is normal - the monitor is just patiently watching.</p>
     </div>
   </section>
 
 </main>
 
+<div class="toast" id="toast">Copied</div>
+
 <footer>
-  <div class="signature">For her, with everything.</div>
-  Built with <span class="heart">love</span> on May 5, 2026. Drop is May 22.
+  <div class="signature">For Sam, with everything.</div>
+  Built by Justin. Last updated May 5, 2026.
 </footer>
 
-<button class="fab" id="share-btn">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-  Share
-</button>
-
 <script>
+  // PHASE LOGIC - auto-updates based on current date
+  function getPhase() {
+    const now = new Date();
+    const drop = new Date('2026-05-22T14:00:00Z'); // 10am ET = 14:00 UTC
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    // Date markers
+    const may12 = new Date('2026-05-12');
+    const may19 = new Date('2026-05-19');
+    const may21 = new Date('2026-05-21');
+    const may22 = new Date('2026-05-22');
+    const may23 = new Date('2026-05-23');
+
+    if (today < may12) {
+      return {
+        label: 'PHASE 1 / FOUNDATION',
+        headline: 'Today: warm up the apps and accounts.',
+        detail: 'We are 17 days out. The biggest single thing you can do today is open the SNKRS app, hit Notify Me on the Shy Pink page, and sign up for emails at travisscott.com. Five minutes.',
+        ctaLabel: 'Open SNKRS app',
+        ctaHref: 'snkrs://launch',
+        ctaPink: false
+      };
+    }
+    if (today < may19) {
+      return {
+        label: 'PHASE 2 / TRAVIS WEBSITE WINDOW',
+        headline: 'Travis raffle could drop any day now.',
+        detail: 'May 12-18 is the historical window for Travis to load his own raffle on travisscott.com. The monitor is watching. When it fires, drop everything and tap the link. Window is short - sometimes 30 minutes.',
+        ctaLabel: 'Open travisscott.com',
+        ctaHref: 'https://travisscott.com',
+        ctaPink: true
+      };
+    }
+    if (today < may21) {
+      return {
+        label: 'PHASE 3 / BOUTIQUE SWEEP',
+        headline: 'Boutique raffles are opening. Enter all of them.',
+        detail: 'Every shop on the Raffles tab. Tap each, fill the form (your details copy with one tap), submit. More entries = better odds. Aim for all 20.',
+        ctaLabel: 'Go to Raffles tab',
+        ctaHref: '#raffles',
+        ctaPink: true
+      };
+    }
+    if (today < may22) {
+      return {
+        label: 'PHASE 4 / FINAL CHECK',
+        headline: 'Pre-flight check tomorrow morning.',
+        detail: 'Tonight: confirm all raffles entered. Confirm SNKRS payment + address. Charge your phone. Set an alarm for 6:30am AZ. Tomorrow is the big one.',
+        ctaLabel: 'See drop day playbook',
+        ctaHref: '#dropday',
+        ctaPink: true
+      };
+    }
+    if (today < may23) {
+      return {
+        label: 'PHASE 5 / DROP DAY',
+        headline: 'Today. Right now. The shoe drops at 7am AZ.',
+        detail: 'Open the SNKRS app. Watch your phone for monitor alerts. Follow the Drop Day tab minute by minute. We are in it.',
+        ctaLabel: 'Open Drop Day playbook',
+        ctaHref: '#dropday',
+        ctaPink: true
+      };
+    }
+    if (now < drop) {
+      return {
+        label: 'PHASE 5 / DROP DAY',
+        headline: 'Drop is in hours. Stay close to your phone.',
+        detail: 'Final pre-flight. Double check Apple Pay. Stay on WiFi. The monitor is on every channel.',
+        ctaLabel: 'Open SNKRS',
+        ctaHref: 'snkrs://launch',
+        ctaPink: true
+      };
+    }
+    return {
+      label: 'PHASE 6 / POST-DROP',
+      headline: 'Drop has happened. Watching for re-raffles and restocks.',
+      detail: 'Boutiques re-raffle unclaimed pairs in 24-72 hours. SNKRS does cancelled-order restocks Mon-Thu mornings. Monitor keeps running. If retail did not hit, we move to the resale plan - Justin will handle.',
+      ctaLabel: 'View status',
+      ctaHref: '#status',
+      ctaPink: false
+    };
+  }
+
+  function applyPhase() {
+    const p = getPhase();
+    document.getElementById('phase-label').textContent = p.label;
+    document.getElementById('phase-headline').textContent = p.headline;
+    document.getElementById('phase-detail').textContent = p.detail;
+    const wrap = document.getElementById('phase-cta-wrap');
+    wrap.innerHTML = '';
+    if (p.ctaLabel) {
+      const a = document.createElement('a');
+      a.className = 'phase-cta' + (p.ctaPink ? ' pink' : '');
+      a.href = p.ctaHref;
+      a.textContent = p.ctaLabel + ' →';
+      if (p.ctaHref.startsWith('#')) {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const tab = p.ctaHref.slice(1);
+          const btn = document.querySelector(`[data-tab="${tab}"]`);
+          if (btn) btn.click();
+        });
+      } else if (!p.ctaHref.startsWith('snkrs:') && !p.ctaHref.startsWith('http')) {
+        // skip
+      } else {
+        a.target = '_blank';
+        a.rel = 'noopener';
+      }
+      wrap.appendChild(a);
+    }
+  }
+
+  // TIMELINE OVERVIEW (Today tab) - phases past, now, future
+  function renderTimelineOverview() {
+    const now = new Date();
+    const phases = [
+      {date: 'May 5 - 11', d: new Date('2026-05-12'), title: 'Foundation', detail: 'Sign up everywhere, install apps, daily SNKRS warming.'},
+      {date: 'May 12 - 18', d: new Date('2026-05-19'), title: 'Travis website window', detail: 'Travis loads his raffle here. Monitor is watching every 60 seconds.'},
+      {date: 'May 19 - 21', d: new Date('2026-05-21'), title: 'Boutique sweep', detail: 'Enter all 20 boutique raffles. Foot Locker reservation. Final SNKRS check.'},
+      {date: 'May 22, 7am AZ', d: new Date('2026-05-23'), title: 'Drop day', detail: 'SNKRS launches. Monitor pings you. Drop everything and enter.'},
+      {date: 'May 23 - June 12', d: new Date('2026-06-13'), title: 'Re-raffles + dip window', detail: 'Boutique re-raffles, SNKRS restocks, then resale dip if needed.'}
+    ];
+    const tl = document.getElementById('timeline-overview');
+    tl.innerHTML = '';
+    phases.forEach((p, i) => {
+      const item = document.createElement('div');
+      let cls = 'timeline-item ';
+      const startNext = i + 1 < phases.length ? phases[i+1].d : null;
+      const startThis = i === 0 ? new Date(0) : phases[i-1].d;
+      if (now >= p.d) cls += 'passed';
+      else if (now >= startThis && now < p.d) cls += 'now';
+      else cls += 'future';
+      item.className = cls;
+      item.innerHTML = `
+        <div class="timeline-date">${p.date}</div>
+        <div class="timeline-title">${p.title}</div>
+        <div class="timeline-detail">${p.detail}</div>
+      `;
+      tl.appendChild(item);
+    });
+  }
+
   // TABS
   const tabs = document.querySelectorAll('.tab-btn');
   const panels = document.querySelectorAll('.tab-panel');
@@ -1313,44 +1141,151 @@
     });
   });
 
-  // CHECKLIST + PROGRESS
-  const allCb = document.querySelectorAll('.checklist input[type=checkbox]');
-
-  function updateProgress() {
-    const total = allCb.length;
-    const done = Array.from(allCb).filter(c => c.checked).length;
-    const pct = total ? (done / total) * 100 : 0;
+  // CHECKLIST
+  function setupChecklist() {
+    const cbs = document.querySelectorAll('.checklist input[type=checkbox]');
     const fill = document.getElementById('progress-fill');
     const val = document.getElementById('progress-value');
-    if (fill) fill.style.width = pct + '%';
-    if (val) val.textContent = done + ' / ' + total;
+    function update() {
+      const total = cbs.length;
+      const done = Array.from(cbs).filter(c => c.checked).length;
+      if (fill) fill.style.width = (total ? done/total*100 : 0) + '%';
+      if (val) val.textContent = done + ' / ' + total;
+    }
+    cbs.forEach(cb => {
+      const key = 'sp3-' + cb.id;
+      if (localStorage.getItem(key) === '1') {
+        cb.checked = true;
+        cb.closest('li').classList.add('done');
+      }
+      cb.addEventListener('change', () => {
+        const li = cb.closest('li');
+        if (cb.checked) {
+          li.classList.add('done');
+          localStorage.setItem(key, '1');
+        } else {
+          li.classList.remove('done');
+          localStorage.removeItem(key);
+        }
+        update();
+      });
+    });
+    update();
   }
 
-  allCb.forEach(cb => {
-    const key = 'shypink-' + cb.id;
-    if (localStorage.getItem(key) === '1') {
-      cb.checked = true;
-      cb.closest('li').classList.add('done');
-    }
-    cb.addEventListener('change', () => {
-      const li = cb.closest('li');
-      if (cb.checked) {
-        li.classList.add('done');
-        localStorage.setItem(key, '1');
-      } else {
-        li.classList.remove('done');
-        localStorage.removeItem(key);
+  // RAFFLE BUTTONS - entered state
+  function setupRaffleButtons() {
+    document.querySelectorAll('.raffle-btn').forEach(btn => {
+      const id = btn.dataset.raffle;
+      const key = 'raffle-' + id;
+      if (localStorage.getItem(key) === '1') btn.classList.add('entered');
+      // Tapping the check toggles entered state without opening the link
+      const check = btn.querySelector('.check');
+      if (check) {
+        check.addEventListener('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (btn.classList.contains('entered')) {
+            btn.classList.remove('entered');
+            localStorage.removeItem(key);
+          } else {
+            btn.classList.add('entered');
+            localStorage.setItem(key, '1');
+            showToast('Marked entered');
+          }
+        });
       }
-      updateProgress();
     });
-    cb.closest('li').addEventListener('click', e => {
-      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'LABEL') {
-        cb.checked = !cb.checked;
-        cb.dispatchEvent(new Event('change'));
+  }
+
+  // COPY DETAILS WIDGET
+  const copyFields = [
+    { id: 'name',    label: 'Name',     placeholder: 'Samantha LastName' },
+    { id: 'email',   label: 'Email',    placeholder: 'sam@example.com' },
+    { id: 'phone',   label: 'Phone',    placeholder: '928-668-3756' },
+    { id: 'addr1',   label: 'Address',  placeholder: '123 Main St' },
+    { id: 'addr2',   label: 'Apt/Unit', placeholder: 'Apt 4B' },
+    { id: 'city',    label: 'City',     placeholder: 'Phoenix' },
+    { id: 'state',   label: 'State',    placeholder: 'AZ' },
+    { id: 'zip',     label: 'Zip',      placeholder: '85001' },
+    { id: 'size',    label: 'Size',     placeholder: 'Women\'s 8 / Men\'s 6.5' }
+  ];
+
+  function setupCopyGrid() {
+    const grid = document.getElementById('copy-grid');
+    grid.innerHTML = '';
+    copyFields.forEach(f => {
+      const stored = localStorage.getItem('cf-' + f.id) || '';
+      const wrap = document.createElement('div');
+      wrap.className = 'copy-card';
+      wrap.dataset.field = f.id;
+      wrap.innerHTML = `
+        <div class="body">
+          <div class="label">${f.label}</div>
+          <div class="value" data-display="1">${stored || '<span style="color: var(--ink-mute); font-weight: 400;">Tap and hold to set</span>'}</div>
+        </div>
+        <div class="copy-icon">⎘</div>
+      `;
+      grid.appendChild(wrap);
+
+      let pressTimer;
+
+      wrap.addEventListener('click', e => {
+        if (wrap.classList.contains('editing')) return;
+        const v = localStorage.getItem('cf-' + f.id) || '';
+        if (!v) {
+          beginEdit();
+          return;
+        }
+        navigator.clipboard.writeText(v).then(() => {
+          wrap.classList.add('copied');
+          showToast(`${f.label} copied`);
+          setTimeout(() => wrap.classList.remove('copied'), 800);
+        });
+      });
+
+      function beginEdit() {
+        wrap.classList.add('editing');
+        const display = wrap.querySelector('[data-display]');
+        const cur = localStorage.getItem('cf-' + f.id) || '';
+        display.outerHTML = `<input type="text" placeholder="${f.placeholder}" value="${cur.replace(/"/g, '&quot;')}">`;
+        const input = wrap.querySelector('input');
+        input.focus();
+        input.select();
+        function save() {
+          const v = input.value.trim();
+          if (v) localStorage.setItem('cf-' + f.id, v);
+          else localStorage.removeItem('cf-' + f.id);
+          // re-render
+          setupCopyGrid();
+        }
+        input.addEventListener('blur', save);
+        input.addEventListener('keydown', e => {
+          if (e.key === 'Enter') input.blur();
+        });
       }
+
+      wrap.addEventListener('contextmenu', e => {
+        e.preventDefault();
+        beginEdit();
+      });
+      wrap.addEventListener('touchstart', () => {
+        pressTimer = setTimeout(beginEdit, 600);
+      }, { passive: true });
+      wrap.addEventListener('touchend', () => clearTimeout(pressTimer));
+      wrap.addEventListener('touchmove', () => clearTimeout(pressTimer));
     });
-  });
-  updateProgress();
+  }
+
+  // TOAST
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
+  }
 
   // COUNTDOWN
   function buildCountdown(parts) {
@@ -1370,14 +1305,13 @@
       el.appendChild(wrap);
     });
   }
-
   function updateCountdown() {
     const drop = new Date('2026-05-22T14:00:00Z');
     const now = new Date();
     const diff = drop - now;
     const el = document.getElementById('cd-value');
     if (diff <= 0) {
-      el.textContent = 'IT IS LIVE - GO GO GO';
+      el.textContent = 'IT IS LIVE - GO';
       return;
     }
     const days = Math.floor(diff / (1000*60*60*24));
@@ -1386,28 +1320,16 @@
     const secs = Math.floor((diff / 1000) % 60);
     buildCountdown([[days, 'days'], [hours, 'hrs'], [mins, 'min'], [secs, 'sec']]);
   }
+
+  // INIT
+  applyPhase();
+  renderTimelineOverview();
+  setupChecklist();
+  setupRaffleButtons();
+  setupCopyGrid();
   updateCountdown();
   setInterval(updateCountdown, 1000);
-
-  // SHARE
-  document.getElementById('share-btn').addEventListener('click', async () => {
-    const data = {
-      title: 'Operation Shy Pink',
-      text: 'The plan to put the Travis Scott Shy Pink on her feet.',
-      url: window.location.href
-    };
-    try {
-      if (navigator.share) {
-        await navigator.share(data);
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        const btn = document.getElementById('share-btn');
-        const orig = btn.innerHTML;
-        btn.textContent = 'Link copied';
-        setTimeout(() => { btn.innerHTML = orig; }, 1500);
-      }
-    } catch (e) {}
-  });
+  setInterval(applyPhase, 60000); // re-check phase every min
 </script>
 
 </body>
